@@ -1,0 +1,56 @@
+name: CD — Preview (APK + Maestro)
+
+on:
+  push:
+    branches: [main, master]
+
+jobs:
+  build-preview:
+    name: Build Android APK (Preview)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Setup EAS
+        uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      - name: Build Android APK (preview)
+        run: eas build --platform android --profile preview --non-interactive --no-wait
+        env:
+          EXPO_PUBLIC_SUPABASE_URL: ${{ secrets.EXPO_PUBLIC_SUPABASE_URL_STAGING }}
+          EXPO_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.EXPO_PUBLIC_SUPABASE_ANON_KEY_STAGING }}
+          EXPO_PUBLIC_RC_API_KEY_IOS: ${{ secrets.EXPO_PUBLIC_RC_API_KEY_IOS }}
+          EXPO_PUBLIC_RC_API_KEY_ANDROID: ${{ secrets.EXPO_PUBLIC_RC_API_KEY_ANDROID }}
+          EXPO_PUBLIC_POSTHOG_API_KEY: ${{ secrets.EXPO_PUBLIC_POSTHOG_API_KEY }}
+          EXPO_PUBLIC_POSTHOG_HOST: ${{ secrets.EXPO_PUBLIC_POSTHOG_HOST }}
+          EXPO_PUBLIC_SENTRY_DSN: ${{ secrets.EXPO_PUBLIC_SENTRY_DSN }}
+
+  maestro-e2e:
+    name: Maestro E2E Tests
+    runs-on: macos-latest
+    needs: build-preview
+    if: false  # Activer quand un émulateur est configuré en CI
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Maestro
+        run: curl -Ls "https://get.maestro.mobile.dev" | bash
+
+      - name: Run all E2E flows
+        run: ~/.maestro/bin/maestro test .maestro/flows/
