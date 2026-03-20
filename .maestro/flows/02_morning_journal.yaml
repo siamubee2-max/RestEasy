@@ -1,0 +1,79 @@
+# RestEasy — Maestro E2E Test: Morning Journal Flow
+# Tests the complete morning journal entry:
+# Home → Journal → Fill all fields → Save → Back to Home
+#
+# Prerequisites: User is logged in and on Home screen
+# Run: maestro test .maestro/flows/02_morning_journal.yaml
+
+appId: com.resteasy.app
+name: "Morning Journal Flow"
+tags:
+  - journal
+  - critical
+
+---
+
+- launchApp:
+    clearState: false
+
+# Navigate to journal
+- tapOn:
+    text: "Journal du matin"
+
+- assertVisible:
+    text: "Journal du matin"
+
+- assertVisible:
+    text: "Comment s'est passée votre nuit ?"
+
+- takeScreenshot: "06_journal_opened"
+
+# Fill bedtime
+- tapOn:
+    text: "À quelle heure vous êtes-vous couché(e) ?"
+
+- assertVisible:
+    text: "Valider"
+
+- tapOn:
+    text: "Valider"
+
+# Adjust sleep onset slider (drag to ~25 min)
+- assertVisible:
+    text: "Combien de temps pour vous endormir ?"
+
+# Adjust wake count
+- tapOn:
+    id: "wake_count_plus"
+
+- tapOn:
+    id: "wake_count_plus"
+
+- assertVisible:
+    text: "2"
+
+# Fill wake time
+- tapOn:
+    text: "À quelle heure vous êtes-vous réveillé(e) ?"
+
+- tapOn:
+    text: "Valider"
+
+# Fill out of bed time
+- tapOn:
+    text: "À quelle heure vous êtes-vous levé(e) ?"
+
+- tapOn:
+    text: "Valider"
+
+- takeScreenshot: "07_journal_filled"
+
+# Save
+- tapOn:
+    text: "Enregistrer"
+
+# Should return to home or show success
+- assertVisible:
+    text: "Enregistré"
+
+- takeScreenshot: "08_journal_saved"

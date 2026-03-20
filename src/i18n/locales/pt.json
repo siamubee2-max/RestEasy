@@ -1,0 +1,269 @@
+{
+  "welcome": {
+    "title": "Bem-vindo ao\nRestEasy",
+    "subtitle": "Um programa clinicamente comprovado para ajudá-lo a dormir novamente. Sem rastreadores. Sem pontuações. Apenas ciência.",
+    "cta": "Começar minha jornada",
+    "disclaimer": "Baseado na Terapia Cognitivo-Comportamental para Insônia (TCC-I)"
+  },
+  "home": {
+    "greeting_morning": "Bom dia, {{name}}",
+    "greeting_afternoon": "Boa tarde, {{name}}",
+    "greeting_evening": "Boa noite, {{name}}",
+    "greeting_night": "Boa noite, {{name}}",
+    "week_progress": "Semana {{current}} de {{total}}",
+    "sleep_window": "Sua janela de sono",
+    "morning_journal": "Diário matinal",
+    "night_mode": "Modo noturno",
+    "program_complete": "Programa concluído!"
+  },
+  "journal": {
+    "title": "Diário matinal",
+    "subtitle": "Como foi sua noite?",
+    "bedtime_question": "A que horas você foi para a cama?",
+    "fall_asleep_question": "Quanto tempo levou para adormecer?",
+    "wakeups_question": "Quantas vezes você acordou?",
+    "wake_time_question": "A que horas você acordou?",
+    "out_of_bed_question": "A que horas você saiu da cama?",
+    "minutes": "{{count}} min",
+    "times": "{{count}} vezes",
+    "save": "Salvar",
+    "saved": "Entrada salva!",
+    "already_done": "Diário já preenchido hoje",
+    "efficiency": "Eficiência do sono: {{value}}%"
+  },
+  "weekly": {
+    "title": "Revisão semana {{week}}",
+    "subtitle": "Sua jornada de sono esta semana",
+    "avg_efficiency": "Eficiência média: {{value}}%",
+    "window_same": "Sua janela de sono permanece igual esta semana",
+    "window_extended": "Sua janela é estendida em 15 min esta semana",
+    "window_reduced": "Sua janela é reduzida em 15 min esta semana",
+    "module_unlocked": "Novo módulo desbloqueado",
+    "start_module": "Iniciar módulo",
+    "days": ["Seg", "Ter", "Qua", "Qui", "Sex", "Sáb", "Dom"]
+  },
+  "night": {
+    "title": "Modo noturno",
+    "breathe": "Respire",
+    "breathe_in": "Inspire",
+    "breathe_hold": "Segure",
+    "breathe_out": "Expire",
+    "cant_sleep": "Não consigo dormir — Levantar",
+    "relaxation": "Exercício de relaxamento",
+    "reminder": "Lembre-se: se você não estiver dormindo em 20 minutos, tudo bem levantar",
+    "get_up_title": "Levante-se",
+    "get_up_text": "Vá para outro cômodo. Faça algo tranquilo até sentir sono. Volte para a cama somente quando estiver com sono.",
+    "return_to_bed": "Voltar para a cama"
+  },
+  "therapy": {
+    "title": "Terapia",
+    "subtitle": "Módulos cognitivos",
+    "locked": "Disponível na semana {{week}}",
+    "completed": "Concluído",
+    "in_progress": "Em andamento",
+    "start": "Começar",
+    "continue": "Continuar",
+    "modules": {
+      "s1_sleep_education": {
+        "title": "Entender o sono",
+        "description": "Os fundamentos da biologia do sono e por que a insônia se desenvolve.",
+        "duration": "8 min",
+        "content": {
+          "intro": "O sono é uma necessidade biológica fundamental, não um luxo. Seu cérebro e corpo dependem dele para se reparar e consolidar a memória.",
+          "section1_title": "Os dois sistemas do sono",
+          "section1_body": "Seu sono é controlado por dois sistemas: o ritmo circadiano (seu relógio interno de 24 horas) e a pressão homeostática do sono (o acúmulo de adenosina durante a vigília). A TCC-I age sobre ambos.",
+          "section2_title": "Por que a insônia persiste",
+          "section2_body": "A insônia crônica é mantida por um ciclo de hiperativação, pensamentos negativos sobre o sono e comportamentos contraproducentes como passar muito tempo na cama.",
+          "section3_title": "A boa notícia",
+          "section3_body": "A TCC-I tem uma taxa de sucesso de 70-80% em estudos clínicos. É mais eficaz do que remédios para dormir a longo prazo e sem efeitos colaterais.",
+          "key_insight": "Você não precisa 'forçar' o sono. Seu trabalho é criar as condições para que ele aconteça naturalmente."
+        }
+      },
+      "s2_sleep_restriction": {
+        "title": "Restrição do sono",
+        "description": "Como e por que reduzir o tempo na cama melhora a qualidade do sono.",
+        "duration": "10 min",
+        "content": {
+          "intro": "A restrição do sono é a técnica mais poderosa da TCC-I. Pode parecer contraintuitiva, mas funciona.",
+          "section1_title": "O princípio",
+          "section1_body": "Ao limitar o tempo na cama às horas que você realmente dorme, você aumenta a pressão homeostática do sono. Isso faz com que você adormeça mais rápido e que o sono seja mais profundo e contínuo.",
+          "section2_title": "Sua janela de sono",
+          "section2_body": "O aplicativo calcula sua janela de sono com base no seu diário. Esta janela é ajustada semanalmente de acordo com sua eficiência do sono.",
+          "section3_title": "Regras importantes",
+          "section3_body": "1. Não vá para a cama antes do seu horário de início. 2. Levante-se sempre no mesmo horário. 3. Não faça sonecas. 4. A janela mínima é de 5 horas.",
+          "key_insight": "A sonolência inicial é normal e temporária. É um sinal de que o tratamento está funcionando."
+        }
+      },
+      "s3_cognitive_restructuring": {
+        "title": "Reestruturação cognitiva",
+        "description": "Liberar a ansiedade relacionada ao sono.",
+        "duration": "12 min",
+        "content": {
+          "intro": "Os pensamentos sobre o sono podem se tornar o maior obstáculo para dormir. Este módulo ensina você a identificá-los e transformá-los.",
+          "section1_title": "Pensamentos comuns",
+          "section1_body": "'Se eu não dormir 8 horas, amanhã serei inútil.' 'Faz semanas que não durmo bem, algo deve estar muito errado.' 'Nunca conseguirei dormir normalmente.' Esses pensamentos são compreensíveis, mas imprecisos.",
+          "section2_title": "O ciclo da ansiedade",
+          "section2_body": "Pensamentos negativos → Ativação fisiológica → Dificuldade para dormir → Mais pensamentos negativos. A reestruturação cognitiva quebra esse ciclo.",
+          "section3_title": "Técnica: questionamento socrático",
+          "section3_body": "Pergunte-se: Este pensamento é 100% verdadeiro? Qual é a evidência contrária? Qual é o pior caso real? Como um amigo compassivo veria isso?",
+          "key_insight": "O objetivo não é pensar positivamente, mas pensar com precisão e compaixão."
+        }
+      },
+      "s4_stimulus_control": {
+        "title": "Controle de estímulos",
+        "description": "Reassociar sua cama ao sono, não à vigília.",
+        "duration": "8 min",
+        "content": {
+          "intro": "Se você passa horas acordado na cama, seu cérebro aprende a associar a cama com a vigília e a ansiedade. O controle de estímulos reverte esse aprendizado.",
+          "section1_title": "As 5 regras",
+          "section1_body": "1. Use a cama apenas para dormir e sexo. 2. Se não conseguir dormir em 20 min, levante-se. 3. Volte para a cama apenas quando estiver com sono. 4. Levante-se sempre no mesmo horário. 5. Não faça sonecas.",
+          "section2_title": "Por que funciona",
+          "section2_body": "Essas regras usam condicionamento clássico para reconectar a cama ao sono. Com o tempo, ir para a cama se torna um sinal automático para dormir.",
+          "section3_title": "A primeira semana",
+          "section3_body": "Pode ser difícil no início. É normal levantar várias vezes por noite. A persistência é fundamental.",
+          "key_insight": "A cama deve ser um lugar de sono, não de luta."
+        }
+      },
+      "s5_relaxation": {
+        "title": "Técnicas de relaxamento",
+        "description": "Respiração, relaxamento muscular progressivo e mindfulness.",
+        "duration": "15 min",
+        "content": {
+          "intro": "O relaxamento não é apenas agradável — é uma habilidade que reduz a hiperativação fisiológica que mantém a insônia.",
+          "section1_title": "Respiração 4-2-6",
+          "section1_body": "Inspire por 4 segundos, segure por 2 segundos, expire por 6 segundos. A expiração lenta ativa o sistema nervoso parassimpático e reduz a frequência cardíaca.",
+          "section2_title": "Relaxamento muscular progressivo",
+          "section2_body": "Tensione e relaxe sistematicamente cada grupo muscular, dos pés à cabeça. Isso ensina seu corpo a reconhecer e liberar a tensão.",
+          "section3_title": "Mindfulness do sono",
+          "section3_body": "Observe seus pensamentos e sensações sem julgá-los. Não tente controlar o sono — apenas observe. O sono vem quando você para de persegui-lo.",
+          "key_insight": "Pratique essas técnicas durante o dia também, não apenas quando não consegue dormir."
+        }
+      },
+      "s6_relapse_prevention": {
+        "title": "Prevenção de recaídas",
+        "description": "Manter seus ganhos e lidar com noites ruins.",
+        "duration": "10 min",
+        "content": {
+          "intro": "Você concluiu o programa. Agora você tem as ferramentas para manter um sono saudável por toda a vida.",
+          "section1_title": "Noites ruins são normais",
+          "section1_body": "Todo mundo tem noites ruins. A diferença agora é que você sabe que não são permanentes e tem ferramentas para lidar com elas.",
+          "section2_title": "Sinais de alerta",
+          "section2_body": "Se você notar que sua eficiência do sono cai abaixo de 80% por mais de uma semana, é hora de voltar às técnicas básicas: restrição do sono e controle de estímulos.",
+          "section3_title": "Seu plano de manutenção",
+          "section3_body": "1. Mantenha horários regulares. 2. Continue usando o diário se necessário. 3. Aplique técnicas de relaxamento quando sentir estresse. 4. Lembre-se: você tem o controle.",
+          "key_insight": "A insônia não define quem você é. Agora você tem as ferramentas para lidar com ela."
+        }
+      }
+    }
+  },
+  "isi": {
+    "title": "Índice de Gravidade da Insônia",
+    "subtitle": "7 perguntas — 2 minutos",
+    "instruction": "Para cada pergunta, indique a gravidade dos seus problemas de sono nas ÚLTIMAS 2 SEMANAS.",
+    "questions": {
+      "q1": "Dificuldade para adormecer",
+      "q2": "Dificuldade para manter o sono",
+      "q3": "Problemas de acordar muito cedo",
+      "q4": "Você está satisfeito com seu sono atual?",
+      "q5": "Em que medida seus problemas de sono interferem no seu funcionamento diário?",
+      "q6": "Quão visíveis são as deteriorações na sua qualidade de vida para os outros?",
+      "q7": "Quão preocupado/angustiado você está com seus problemas de sono?"
+    },
+    "scale_none": "Nenhum",
+    "scale_mild": "Leve",
+    "scale_moderate": "Moderado",
+    "scale_severe": "Grave",
+    "scale_very_severe": "Muito grave",
+    "scale_not_at_all": "De jeito nenhum",
+    "scale_very": "Muito",
+    "severity": {
+      "none": "Sem insônia clinicamente significativa",
+      "subthreshold": "Insônia sublimiar",
+      "moderate": "Insônia moderada",
+      "severe": "Insônia grave"
+    },
+    "result_title": "Sua pontuação ISI: {{score}}/28",
+    "result_subtitle": "{{severity}}",
+    "improvement": "Melhora desde o início: {{points}} pontos",
+    "save": "Salvar pontuação"
+  },
+  "paywall": {
+    "title": "Desbloqueie seu sono",
+    "subtitle": "Acesso completo ao programa TCC-I de 6 semanas",
+    "trial_badge": "7 dias grátis",
+    "features": [
+      "Programa TCC-I completo de 6 semanas",
+      "Diário do sono ilimitado",
+      "Modo noturno com respiração guiada",
+      "Exercícios de áudio com voz guiada",
+      "Gráficos de progresso detalhados",
+      "Módulos cognitivos desbloqueados",
+      "Sincronização com Apple Health / Google Fit"
+    ],
+    "monthly_label": "Mensal",
+    "annual_label": "Anual",
+    "annual_savings": "Economize {{percent}}%",
+    "per_month": "/mês",
+    "per_year": "/ano",
+    "cta_trial": "Iniciar teste gratuito de 7 dias",
+    "cta_subscribe": "Assinar agora",
+    "restore": "Restaurar compras",
+    "terms": "Ao continuar, você concorda com nossos Termos de serviço e Política de privacidade.",
+    "cancel_anytime": "Cancele a qualquer momento"
+  },
+  "streak": {
+    "days": "{{count}} dias",
+    "current": "Sequência atual",
+    "longest": "Maior sequência",
+    "badges": {
+      "first_entry": "Primeira entrada",
+      "week_1": "1 semana de consistência",
+      "week_2": "2 semanas de consistência",
+      "month_1": "1 mês de consistência",
+      "efficiency_85": "Eficiência ≥ 85%",
+      "efficiency_90": "Eficiência ≥ 90%",
+      "program_complete": "Programa concluído",
+      "night_owl": "Coruja noturna",
+      "early_bird": "Madrugador"
+    }
+  },
+  "profile": {
+    "title": "Perfil",
+    "program_progress": "Progresso do programa",
+    "week_of": "Semana {{current}} de {{total}}",
+    "started": "Iniciado em {{date}}",
+    "settings": "Configurações",
+    "notifications": "Notificações",
+    "language": "Idioma",
+    "privacy": "Privacidade",
+    "support": "Suporte",
+    "sign_out": "Sair",
+    "version": "RestEasy v{{version}}",
+    "health_sync": "Sincronização de saúde",
+    "health_sync_desc": "Importar dados do Apple Health / Google Fit",
+    "export_data": "Exportar meus dados",
+    "delete_account": "Excluir minha conta"
+  },
+  "notifications": {
+    "journal_reminder_title": "Como foi sua noite?",
+    "journal_reminder_body": "Reserve 60 segundos para preencher seu diário matinal.",
+    "bedtime_reminder_title": "Sua janela de sono começa em breve",
+    "bedtime_reminder_body": "Prepare-se para ir para a cama às {{time}}.",
+    "streak_title": "{{count}} dias seguidos!",
+    "streak_body": "Continue assim. Seu sono melhora a cada dia.",
+    "weekly_review_title": "Sua revisão semanal está pronta",
+    "weekly_review_body": "Semana {{week}} concluída. Veja seu progresso."
+  },
+  "common": {
+    "back": "Voltar",
+    "close": "Fechar",
+    "save": "Salvar",
+    "cancel": "Cancelar",
+    "continue": "Continuar",
+    "loading": "Carregando...",
+    "error": "Ocorreu um erro",
+    "retry": "Tentar novamente",
+    "am": "AM",
+    "pm": "PM"
+  }
+}

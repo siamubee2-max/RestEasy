@@ -1,0 +1,76 @@
+# RestEasy — Maestro E2E Test: Onboarding Flow
+# Tests the complete first-launch experience:
+# Welcome → Onboarding (3 steps) → Home Screen
+#
+# Run: maestro test .maestro/flows/01_onboarding.yaml
+# Run all: maestro test .maestro/
+
+appId: com.resteasy.app
+name: "Onboarding Flow"
+tags:
+  - onboarding
+  - critical
+
+---
+
+# ── Step 1: Welcome Screen ────────────────────────────────────────────────────
+- launchApp:
+    clearState: true
+
+- assertVisible:
+    text: "RestEasy"
+    
+- assertVisible:
+    text: "Commencer"
+
+- takeScreenshot: "01_welcome_screen"
+
+- tapOn:
+    text: "Commencer"
+
+# ── Step 2: Onboarding — Prénom ───────────────────────────────────────────────
+- assertVisible:
+    text: "Bienvenue"
+
+- tapOn:
+    id: "name_input"
+
+- inputText: "Marie"
+
+- takeScreenshot: "02_onboarding_name"
+
+- tapOn:
+    text: "Continuer"
+
+# ── Step 3: Onboarding — Heure de lever ──────────────────────────────────────
+- assertVisible:
+    text: "Votre heure de lever"
+
+- takeScreenshot: "03_onboarding_wake_time"
+
+- tapOn:
+    text: "Continuer"
+
+# ── Step 4: Onboarding — Temps au lit ────────────────────────────────────────
+- assertVisible:
+    text: "Votre temps au lit"
+
+- takeScreenshot: "04_onboarding_time_in_bed"
+
+- tapOn:
+    text: "Commencer le programme"
+
+# ── Step 5: Home Screen ───────────────────────────────────────────────────────
+- assertVisible:
+    text: "Bonsoir"
+
+- assertVisible:
+    text: "Semaine 1 sur 6"
+
+- assertVisible:
+    text: "Journal du matin"
+
+- assertVisible:
+    text: "Mode nuit"
+
+- takeScreenshot: "05_home_screen"

@@ -1,0 +1,269 @@
+{
+  "welcome": {
+    "title": "Willkommen bei\nRestEasy",
+    "subtitle": "Ein klinisch erprobtes Programm, das Ihnen hilft, wieder zu schlafen. Keine Tracker. Keine Scores. Nur Wissenschaft.",
+    "cta": "Meine Reise beginnen",
+    "disclaimer": "Basierend auf der Kognitiven Verhaltenstherapie für Insomnie (KVT-I)"
+  },
+  "home": {
+    "greeting_morning": "Guten Morgen, {{name}}",
+    "greeting_afternoon": "Guten Nachmittag, {{name}}",
+    "greeting_evening": "Guten Abend, {{name}}",
+    "greeting_night": "Gute Nacht, {{name}}",
+    "week_progress": "Woche {{current}} von {{total}}",
+    "sleep_window": "Ihr Schlaffenster",
+    "morning_journal": "Morgentagebuch",
+    "night_mode": "Nachtmodus",
+    "program_complete": "Programm abgeschlossen!"
+  },
+  "journal": {
+    "title": "Morgentagebuch",
+    "subtitle": "Wie war Ihre Nacht?",
+    "bedtime_question": "Wann sind Sie ins Bett gegangen?",
+    "fall_asleep_question": "Wie lange haben Sie gebraucht, um einzuschlafen?",
+    "wakeups_question": "Wie oft sind Sie aufgewacht?",
+    "wake_time_question": "Wann sind Sie aufgewacht?",
+    "out_of_bed_question": "Wann sind Sie aufgestanden?",
+    "minutes": "{{count}} Min.",
+    "times": "{{count}} Mal",
+    "save": "Speichern",
+    "saved": "Eintrag gespeichert!",
+    "already_done": "Tagebuch heute bereits ausgefüllt",
+    "efficiency": "Schlafeffizienz: {{value}}%"
+  },
+  "weekly": {
+    "title": "Wochenbericht Woche {{week}}",
+    "subtitle": "Ihre Schlafentwicklung diese Woche",
+    "avg_efficiency": "Durchschnittliche Effizienz: {{value}}%",
+    "window_same": "Ihr Schlaffenster bleibt diese Woche gleich",
+    "window_extended": "Ihr Schlaffenster wird um 15 Min. erweitert",
+    "window_reduced": "Ihr Schlaffenster wird um 15 Min. verkürzt",
+    "module_unlocked": "Neues Modul freigeschaltet",
+    "start_module": "Modul starten",
+    "days": ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"]
+  },
+  "night": {
+    "title": "Nachtmodus",
+    "breathe": "Atmen",
+    "breathe_in": "Einatmen",
+    "breathe_hold": "Halten",
+    "breathe_out": "Ausatmen",
+    "cant_sleep": "Ich kann nicht schlafen — Aufstehen",
+    "relaxation": "Entspannungsübung",
+    "reminder": "Denken Sie daran: Wenn Sie nach 20 Minuten noch nicht schlafen, ist es in Ordnung aufzustehen",
+    "get_up_title": "Stehen Sie auf",
+    "get_up_text": "Gehen Sie in ein anderes Zimmer. Machen Sie etwas Ruhiges, bis Sie sich schläfrig fühlen. Gehen Sie erst wieder ins Bett, wenn Sie wirklich schläfrig sind.",
+    "return_to_bed": "Zurück ins Bett"
+  },
+  "therapy": {
+    "title": "Therapie",
+    "subtitle": "Kognitive Module",
+    "locked": "Freigeschaltet in Woche {{week}}",
+    "completed": "Abgeschlossen",
+    "in_progress": "In Bearbeitung",
+    "start": "Starten",
+    "continue": "Fortfahren",
+    "modules": {
+      "s1_sleep_education": {
+        "title": "Schlaf verstehen",
+        "description": "Die Grundlagen der Schlafbiologie und warum Insomnie entsteht.",
+        "duration": "8 Min.",
+        "content": {
+          "intro": "Schlaf ist ein grundlegendes biologisches Bedürfnis, kein Luxus. Ihr Gehirn und Körper brauchen ihn zur Regeneration und Gedächtniskonsolidierung.",
+          "section1_title": "Die zwei Schlafsysteme",
+          "section1_body": "Ihr Schlaf wird von zwei Systemen gesteuert: dem zirkadianen Rhythmus (Ihrer inneren 24-Stunden-Uhr) und dem homöostatischen Schlafdruck (der Ansammlung von Adenosin während der Wachheit). Die KVT-I wirkt auf beide.",
+          "section2_title": "Warum Insomnie anhält",
+          "section2_body": "Chronische Insomnie wird durch einen Kreislauf aus Hyperarousal, negativen Gedanken über den Schlaf und kontraproduktivem Verhalten wie zu viel Zeit im Bett aufrechterhalten.",
+          "section3_title": "Die gute Nachricht",
+          "section3_body": "Die KVT-I hat in klinischen Studien eine Erfolgsrate von 70-80%. Sie ist langfristig wirksamer als Schlafmittel und ohne Nebenwirkungen.",
+          "key_insight": "Sie müssen den Schlaf nicht 'erzwingen'. Ihre Aufgabe ist es, die Bedingungen zu schaffen, damit er natürlich eintreten kann."
+        }
+      },
+      "s2_sleep_restriction": {
+        "title": "Schlafrestriktion",
+        "description": "Wie und warum weniger Zeit im Bett die Schlafqualität verbessert.",
+        "duration": "10 Min.",
+        "content": {
+          "intro": "Die Schlafrestriktion ist die wirksamste Technik der KVT-I. Sie mag kontraintuitiv erscheinen, aber sie funktioniert.",
+          "section1_title": "Das Prinzip",
+          "section1_body": "Indem Sie die Zeit im Bett auf die Stunden begrenzen, die Sie tatsächlich schlafen, erhöhen Sie den homöostatischen Schlafdruck. Dies führt dazu, dass Sie schneller einschlafen und der Schlaf tiefer und durchgehender wird.",
+          "section2_title": "Ihr Schlaffenster",
+          "section2_body": "Die App berechnet Ihr Schlaffenster anhand Ihres Tagebuchs. Dieses Fenster wird wöchentlich basierend auf Ihrer Schlafeffizienz angepasst.",
+          "section3_title": "Wichtige Regeln",
+          "section3_body": "1. Gehen Sie nicht vor Ihrer Startzeit ins Bett. 2. Stehen Sie immer zur gleichen Zeit auf. 3. Machen Sie keine Nickerchen. 4. Das Mindestfenster beträgt 5 Stunden.",
+          "key_insight": "Anfängliche Schläfrigkeit ist normal und vorübergehend. Sie ist ein Zeichen dafür, dass die Behandlung wirkt."
+        }
+      },
+      "s3_cognitive_restructuring": {
+        "title": "Kognitive Umstrukturierung",
+        "description": "Schlafangst loslassen.",
+        "duration": "12 Min.",
+        "content": {
+          "intro": "Gedanken über den Schlaf können zum größten Hindernis für das Einschlafen werden. Dieses Modul lehrt Sie, sie zu erkennen und umzuwandeln.",
+          "section1_title": "Häufige Gedanken",
+          "section1_body": "'Wenn ich keine 8 Stunden schlafe, bin ich morgen nutzlos.' 'Ich schlafe seit Wochen schlecht, irgendetwas muss sehr falsch sein.' 'Ich werde nie wieder normal schlafen können.' Diese Gedanken sind verständlich, aber ungenau.",
+          "section2_title": "Der Angstkreislauf",
+          "section2_body": "Negative Gedanken → Physiologische Aktivierung → Einschlafschwierigkeiten → Mehr negative Gedanken. Die kognitive Umstrukturierung durchbricht diesen Kreislauf.",
+          "section3_title": "Technik: Sokratisches Hinterfragen",
+          "section3_body": "Fragen Sie sich: Ist dieser Gedanke 100% wahr? Was spricht dagegen? Was ist der reale schlimmste Fall? Wie würde ein mitfühlender Freund darauf schauen?",
+          "key_insight": "Das Ziel ist nicht positives Denken, sondern präzises und mitfühlendes Denken."
+        }
+      },
+      "s4_stimulus_control": {
+        "title": "Stimuluskontrolle",
+        "description": "Ihr Bett wieder mit Schlaf, nicht mit Wachheit verbinden.",
+        "duration": "8 Min.",
+        "content": {
+          "intro": "Wenn Sie stundenlang wach im Bett liegen, lernt Ihr Gehirn, das Bett mit Wachheit und Angst zu verbinden. Die Stimuluskontrolle kehrt dieses Lernen um.",
+          "section1_title": "Die 5 Regeln",
+          "section1_body": "1. Nutzen Sie das Bett nur zum Schlafen und für Sex. 2. Wenn Sie nach 20 Min. nicht schlafen können, stehen Sie auf. 3. Gehen Sie nur ins Bett, wenn Sie schläfrig sind. 4. Stehen Sie immer zur gleichen Zeit auf. 5. Machen Sie keine Nickerchen.",
+          "section2_title": "Warum es funktioniert",
+          "section2_body": "Diese Regeln nutzen klassische Konditionierung, um das Bett wieder mit Schlaf zu verbinden. Mit der Zeit wird das Zubettgehen zu einem automatischen Signal für den Schlaf.",
+          "section3_title": "Die erste Woche",
+          "section3_body": "Es kann anfangs schwierig sein. Es ist normal, mehrmals pro Nacht aufzustehen. Beharrlichkeit ist der Schlüssel.",
+          "key_insight": "Das Bett soll ein Ort des Schlafs sein, kein Ort des Kampfes."
+        }
+      },
+      "s5_relaxation": {
+        "title": "Entspannungstechniken",
+        "description": "Atemübungen, progressive Muskelentspannung und Achtsamkeit.",
+        "duration": "15 Min.",
+        "content": {
+          "intro": "Entspannung ist nicht nur angenehm — sie ist eine Fähigkeit, die das physiologische Hyperarousal reduziert, das Insomnie aufrechthält.",
+          "section1_title": "4-2-6 Atemübung",
+          "section1_body": "4 Sekunden einatmen, 2 Sekunden halten, 6 Sekunden ausatmen. Das langsame Ausatmen aktiviert das parasympathische Nervensystem und senkt die Herzfrequenz.",
+          "section2_title": "Progressive Muskelentspannung",
+          "section2_body": "Spannen und entspannen Sie systematisch jede Muskelgruppe, von den Füßen bis zum Kopf. Dies lehrt Ihren Körper, Anspannung zu erkennen und loszulassen.",
+          "section3_title": "Schlaf-Achtsamkeit",
+          "section3_body": "Beobachten Sie Ihre Gedanken und Empfindungen ohne zu urteilen. Versuchen Sie nicht, den Schlaf zu kontrollieren — beobachten Sie einfach. Schlaf kommt, wenn Sie aufhören, ihn zu verfolgen.",
+          "key_insight": "Üben Sie diese Techniken auch tagsüber, nicht nur wenn Sie nicht schlafen können."
+        }
+      },
+      "s6_relapse_prevention": {
+        "title": "Rückfallprävention",
+        "description": "Ihre Fortschritte erhalten und mit schlechten Nächten umgehen.",
+        "duration": "10 Min.",
+        "content": {
+          "intro": "Sie haben das Programm abgeschlossen. Jetzt haben Sie die Werkzeuge, um ein gesundes Schlafverhalten lebenslang aufrechtzuerhalten.",
+          "section1_title": "Schlechte Nächte sind normal",
+          "section1_body": "Jeder hat schlechte Nächte. Der Unterschied ist jetzt, dass Sie wissen, dass sie nicht dauerhaft sind, und Sie haben Werkzeuge, um damit umzugehen.",
+          "section2_title": "Warnsignale",
+          "section2_body": "Wenn Sie bemerken, dass Ihre Schlafeffizienz mehr als eine Woche unter 80% fällt, ist es Zeit, zu den Grundtechniken zurückzukehren: Schlafrestriktion und Stimuluskontrolle.",
+          "section3_title": "Ihr Wartungsplan",
+          "section3_body": "1. Behalten Sie regelmäßige Schlafzeiten bei. 2. Nutzen Sie das Tagebuch weiterhin, wenn nötig. 3. Wenden Sie Entspannungstechniken bei Stress an. 4. Denken Sie daran: Sie haben die Kontrolle.",
+          "key_insight": "Insomnie definiert nicht, wer Sie sind. Sie haben jetzt die Werkzeuge, um damit umzugehen."
+        }
+      }
+    }
+  },
+  "isi": {
+    "title": "Insomnie-Schweregrad-Index",
+    "subtitle": "7 Fragen — 2 Minuten",
+    "instruction": "Bitte geben Sie für jede Frage den Schweregrad Ihrer Schlafprobleme in den LETZTEN 2 WOCHEN an.",
+    "questions": {
+      "q1": "Schwierigkeiten beim Einschlafen",
+      "q2": "Schwierigkeiten beim Durchschlafen",
+      "q3": "Probleme mit zu frühem Aufwachen",
+      "q4": "Sind Sie mit Ihrem aktuellen Schlaf zufrieden?",
+      "q5": "Inwieweit beeinträchtigen Ihre Schlafprobleme Ihr tägliches Funktionieren?",
+      "q6": "Wie sichtbar sind die Beeinträchtigungen Ihrer Lebensqualität für andere?",
+      "q7": "Wie besorgt/belastet sind Sie wegen Ihrer Schlafprobleme?"
+    },
+    "scale_none": "Keine",
+    "scale_mild": "Leicht",
+    "scale_moderate": "Mäßig",
+    "scale_severe": "Schwer",
+    "scale_very_severe": "Sehr schwer",
+    "scale_not_at_all": "Gar nicht",
+    "scale_very": "Sehr",
+    "severity": {
+      "none": "Kein klinisch signifikanter Schlafmangel",
+      "subthreshold": "Unterschwellige Insomnie",
+      "moderate": "Mäßige Insomnie",
+      "severe": "Schwere Insomnie"
+    },
+    "result_title": "Ihr ISI-Score: {{score}}/28",
+    "result_subtitle": "{{severity}}",
+    "improvement": "Verbesserung seit Beginn: {{points}} Punkte",
+    "save": "Score speichern"
+  },
+  "paywall": {
+    "title": "Entsperren Sie Ihren Schlaf",
+    "subtitle": "Vollständiger Zugang zum 6-Wochen KVT-I-Programm",
+    "trial_badge": "7 Tage kostenlos",
+    "features": [
+      "Vollständiges 6-Wochen KVT-I-Programm",
+      "Unbegrenztes Schlaftagebuch",
+      "Nachtmodus mit geführter Atmung",
+      "Audio-Übungen mit geführter Stimme",
+      "Detaillierte Fortschrittsgrafiken",
+      "Freigeschaltete kognitive Module",
+      "Synchronisierung mit Apple Health / Google Fit"
+    ],
+    "monthly_label": "Monatlich",
+    "annual_label": "Jährlich",
+    "annual_savings": "{{percent}}% sparen",
+    "per_month": "/Monat",
+    "per_year": "/Jahr",
+    "cta_trial": "7-tägige kostenlose Testversion starten",
+    "cta_subscribe": "Jetzt abonnieren",
+    "restore": "Käufe wiederherstellen",
+    "terms": "Durch Fortfahren stimmen Sie unseren Nutzungsbedingungen und Datenschutzrichtlinien zu.",
+    "cancel_anytime": "Jederzeit kündbar"
+  },
+  "streak": {
+    "days": "{{count}} Tage",
+    "current": "Aktuelle Serie",
+    "longest": "Längste Serie",
+    "badges": {
+      "first_entry": "Erster Eintrag",
+      "week_1": "1 Woche Beständigkeit",
+      "week_2": "2 Wochen Beständigkeit",
+      "month_1": "1 Monat Beständigkeit",
+      "efficiency_85": "Effizienz ≥ 85%",
+      "efficiency_90": "Effizienz ≥ 90%",
+      "program_complete": "Programm abgeschlossen",
+      "night_owl": "Nachteule",
+      "early_bird": "Frühaufsteher"
+    }
+  },
+  "profile": {
+    "title": "Profil",
+    "program_progress": "Programmfortschritt",
+    "week_of": "Woche {{current}} von {{total}}",
+    "started": "Gestartet am {{date}}",
+    "settings": "Einstellungen",
+    "notifications": "Benachrichtigungen",
+    "language": "Sprache",
+    "privacy": "Datenschutz",
+    "support": "Support",
+    "sign_out": "Abmelden",
+    "version": "RestEasy v{{version}}",
+    "health_sync": "Gesundheitssynchronisierung",
+    "health_sync_desc": "Daten von Apple Health / Google Fit importieren",
+    "export_data": "Meine Daten exportieren",
+    "delete_account": "Mein Konto löschen"
+  },
+  "notifications": {
+    "journal_reminder_title": "Wie war Ihre Nacht?",
+    "journal_reminder_body": "Nehmen Sie sich 60 Sekunden für Ihr Morgentagebuch.",
+    "bedtime_reminder_title": "Ihr Schlaffenster beginnt bald",
+    "bedtime_reminder_body": "Bereiten Sie sich darauf vor, um {{time}} ins Bett zu gehen.",
+    "streak_title": "{{count}} Tage in Folge!",
+    "streak_body": "Weiter so. Ihr Schlaf verbessert sich jeden Tag.",
+    "weekly_review_title": "Ihre Wochenübersicht ist bereit",
+    "weekly_review_body": "Woche {{week}} abgeschlossen. Sehen Sie Ihren Fortschritt."
+  },
+  "common": {
+    "back": "Zurück",
+    "close": "Schließen",
+    "save": "Speichern",
+    "cancel": "Abbrechen",
+    "continue": "Weiter",
+    "loading": "Laden...",
+    "error": "Ein Fehler ist aufgetreten",
+    "retry": "Erneut versuchen",
+    "am": "AM",
+    "pm": "PM"
+  }
+}

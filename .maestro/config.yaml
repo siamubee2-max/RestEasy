@@ -1,0 +1,24 @@
+# RestEasy — Maestro Global Configuration
+# Docs: https://maestro.mobile.dev
+
+# Default timeout for all assertions (ms)
+assertTimeout: 5000
+
+# Default delay between actions (ms)
+actionDelay: 300
+
+# Screenshot directory
+screenshotDir: .maestro/screenshots
+
+# Test environment
+env:
+  APP_ID: com.resteasy.app
+  TEST_EMAIL: test@resteasy.app
+  # TEST_PASSWORD is injected via CI secrets
+
+# Flows to run in order for full regression
+flows:
+  - .maestro/flows/01_onboarding.yaml
+  - .maestro/flows/02_morning_journal.yaml
+  - .maestro/flows/03_night_mode.yaml
+  - .maestro/flows/04_paywall.yaml

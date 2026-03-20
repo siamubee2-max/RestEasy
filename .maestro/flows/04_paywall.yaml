@@ -1,0 +1,48 @@
+# RestEasy — Maestro E2E Test: Paywall Flow
+# Tests the paywall display and purchase flow (sandbox mode)
+#
+# Note: Run on a device with a sandbox Apple/Google account configured
+# Run: maestro test .maestro/flows/04_paywall.yaml
+
+appId: com.resteasy.app
+name: "Paywall Flow"
+tags:
+  - paywall
+  - purchases
+
+---
+
+- launchApp:
+    clearState: false
+
+# Navigate to Therapy tab (locked content triggers paywall)
+- tapOn:
+    id: "tab_therapy"
+
+- assertVisible:
+    text: "Thérapie"
+
+# Tap on a locked module (week 2+)
+- tapOn:
+    id: "module_week2"
+
+# Paywall should appear
+- assertVisible:
+    text: "Débloquer RestEasy"
+
+- assertVisible:
+    text: "49,99"
+
+- takeScreenshot: "11_paywall_shown"
+
+# Test restore purchases
+- tapOn:
+    text: "Restaurer mes achats"
+
+- assertVisible:
+    text: "Restauration"
+
+- takeScreenshot: "12_paywall_restore"
+
+# Dismiss paywall
+- pressKey: Back

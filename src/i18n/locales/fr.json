@@ -1,0 +1,124 @@
+{
+  "welcome": {
+    "title": "Bienvenue sur\nRestEasy",
+    "subtitle": "Un programme cliniquement fondé pour vous aider à dormir à nouveau. Sans trackers. Sans scores. Juste la science.",
+    "cta": "Commencer mon parcours",
+    "disclaimer": "Basé sur la Thérapie Cognitive et Comportementale pour l'Insomnie (TCC-I)"
+  },
+  "home": {
+    "greeting_morning": "Bonjour, {{name}}",
+    "greeting_afternoon": "Bon après-midi, {{name}}",
+    "greeting_evening": "Bonsoir, {{name}}",
+    "greeting_night": "Bonne nuit, {{name}}",
+    "week_progress": "Semaine {{current}} sur {{total}}",
+    "sleep_window": "Votre fenêtre de sommeil",
+    "morning_journal": "Journal du matin",
+    "night_mode": "Mode nuit",
+    "program_complete": "Programme terminé !"
+  },
+  "journal": {
+    "title": "Journal du matin",
+    "subtitle": "Comment s'est passée votre nuit ?",
+    "bedtime_question": "À quelle heure vous êtes-vous couché(e) ?",
+    "fall_asleep_question": "Combien de temps pour vous endormir ?",
+    "wakeups_question": "Combien de fois vous êtes-vous réveillé(e) ?",
+    "wake_time_question": "À quelle heure vous êtes-vous réveillé(e) ?",
+    "out_of_bed_question": "À quelle heure avez-vous quitté le lit ?",
+    "minutes": "{{count}} min",
+    "times": "{{count}} fois",
+    "save": "Enregistrer",
+    "saved": "Entrée enregistrée !",
+    "already_done": "Journal déjà rempli aujourd'hui",
+    "efficiency": "Efficacité du sommeil : {{value}}%"
+  },
+  "weekly": {
+    "title": "Bilan semaine {{week}}",
+    "subtitle": "Votre parcours de sommeil cette semaine",
+    "avg_efficiency": "Efficacité moyenne : {{value}}%",
+    "window_same": "Votre fenêtre de sommeil reste identique cette semaine",
+    "window_extended": "Votre fenêtre est étendue de 15 min cette semaine",
+    "window_reduced": "Votre fenêtre est réduite de 15 min cette semaine",
+    "module_unlocked": "Nouveau module débloqué",
+    "start_module": "Démarrer le module",
+    "days": ["Lun", "Mar", "Mer", "Jeu", "Ven", "Sam", "Dim"]
+  },
+  "night": {
+    "title": "Mode nuit",
+    "breathe": "Respirez",
+    "breathe_in": "Inspirez",
+    "breathe_hold": "Retenez",
+    "breathe_out": "Expirez",
+    "cant_sleep": "Je n'arrive pas à dormir — Me lever",
+    "relaxation": "Exercice de relaxation",
+    "reminder": "Rappel : si vous n'êtes pas endormi(e) dans 20 minutes, il est normal de se lever",
+    "get_up_title": "Levez-vous",
+    "get_up_text": "Allez dans une autre pièce. Faites quelque chose de calme jusqu'à ce que vous vous sentiez somnolent(e). Revenez au lit seulement quand vous avez sommeil.",
+    "return_to_bed": "Retourner au lit"
+  },
+  "therapy": {
+    "title": "Thérapie",
+    "subtitle": "Modules cognitifs",
+    "locked": "Débloqué semaine {{week}}",
+    "completed": "Terminé",
+    "in_progress": "En cours",
+    "start": "Commencer",
+    "continue": "Continuer",
+    "modules": {
+      "s1_sleep_education": {
+        "title": "Comprendre le sommeil",
+        "description": "Les bases de la biologie du sommeil et pourquoi l'insomnie se développe.",
+        "duration": "8 min"
+      },
+      "s2_sleep_restriction": {
+        "title": "La restriction du sommeil",
+        "description": "Comment et pourquoi réduire le temps au lit améliore la qualité du sommeil.",
+        "duration": "10 min"
+      },
+      "s3_cognitive_restructuring": {
+        "title": "Restructuration cognitive",
+        "description": "Lâcher prise sur l'anxiété liée au sommeil.",
+        "duration": "12 min"
+      },
+      "s4_stimulus_control": {
+        "title": "Contrôle des stimuli",
+        "description": "Réassocier votre lit au sommeil, pas à l'éveil.",
+        "duration": "8 min"
+      },
+      "s5_relaxation": {
+        "title": "Techniques de relaxation",
+        "description": "Respiration, relaxation musculaire progressive et pleine conscience.",
+        "duration": "15 min"
+      },
+      "s6_relapse_prevention": {
+        "title": "Prévention des rechutes",
+        "description": "Maintenir vos gains et gérer les mauvaises nuits.",
+        "duration": "10 min"
+      }
+    }
+  },
+  "profile": {
+    "title": "Profil",
+    "program_progress": "Progression du programme",
+    "week_of": "Semaine {{current}} sur {{total}}",
+    "started": "Démarré le {{date}}",
+    "settings": "Paramètres",
+    "notifications": "Notifications",
+    "language": "Langue",
+    "privacy": "Confidentialité",
+    "support": "Support",
+    "sign_out": "Se déconnecter",
+    "version": "RestEasy v{{version}}"
+  },
+  "common": {
+    "back": "Retour",
+    "close": "Fermer",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "continue": "Continuer",
+    "loading": "Chargement...",
+    "error": "Une erreur est survenue",
+    "retry": "Réessayer",
+    "am": "AM",
+    "pm": "PM"
+  }
+}

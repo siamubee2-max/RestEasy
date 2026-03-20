@@ -1,0 +1,124 @@
+{
+  "welcome": {
+    "title": "Welcome to\nRestEasy",
+    "subtitle": "A clinically proven program to help you sleep again. No trackers. No scores. Just science.",
+    "cta": "Begin Your Journey",
+    "disclaimer": "Based on Cognitive Behavioral Therapy for Insomnia (CBT-I)"
+  },
+  "home": {
+    "greeting_morning": "Good morning, {{name}}",
+    "greeting_afternoon": "Good afternoon, {{name}}",
+    "greeting_evening": "Good evening, {{name}}",
+    "greeting_night": "Good night, {{name}}",
+    "week_progress": "Week {{current}} of {{total}}",
+    "sleep_window": "Your Sleep Window",
+    "morning_journal": "Morning Journal",
+    "night_mode": "Night Mode",
+    "program_complete": "Program Complete!"
+  },
+  "journal": {
+    "title": "Morning Journal",
+    "subtitle": "How was your night?",
+    "bedtime_question": "What time did you go to bed?",
+    "fall_asleep_question": "How long did it take to fall asleep?",
+    "wakeups_question": "How many times did you wake up?",
+    "wake_time_question": "What time did you wake up?",
+    "out_of_bed_question": "What time did you get out of bed?",
+    "minutes": "{{count}} min",
+    "times": "{{count}} times",
+    "save": "Save Entry",
+    "saved": "Entry saved!",
+    "already_done": "Journal already filled today",
+    "efficiency": "Sleep Efficiency: {{value}}%"
+  },
+  "weekly": {
+    "title": "Week {{week}} Review",
+    "subtitle": "Your sleep journey this week",
+    "avg_efficiency": "Average Sleep Efficiency: {{value}}%",
+    "window_same": "Your sleep window stays the same this week",
+    "window_extended": "Your sleep window is extended by 15 min this week",
+    "window_reduced": "Your sleep window is reduced by 15 min this week",
+    "module_unlocked": "New Module Unlocked",
+    "start_module": "Start Module",
+    "days": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+  },
+  "night": {
+    "title": "Night Mode",
+    "breathe": "Breathe",
+    "breathe_in": "Breathe in",
+    "breathe_hold": "Hold",
+    "breathe_out": "Breathe out",
+    "cant_sleep": "I can't sleep — Get up",
+    "relaxation": "Relaxation Exercise",
+    "reminder": "Remember: if you're not asleep in 20 minutes, it's okay to get up",
+    "get_up_title": "Get Up",
+    "get_up_text": "Go to another room. Do something calm until you feel sleepy. Return to bed only when you feel drowsy.",
+    "return_to_bed": "Return to bed"
+  },
+  "therapy": {
+    "title": "Therapy",
+    "subtitle": "Cognitive Modules",
+    "locked": "Unlocked week {{week}}",
+    "completed": "Completed",
+    "in_progress": "In progress",
+    "start": "Start",
+    "continue": "Continue",
+    "modules": {
+      "s1_sleep_education": {
+        "title": "Understanding Sleep",
+        "description": "The basics of sleep biology and why insomnia develops.",
+        "duration": "8 min"
+      },
+      "s2_sleep_restriction": {
+        "title": "Sleep Restriction",
+        "description": "How and why reducing time in bed improves sleep quality.",
+        "duration": "10 min"
+      },
+      "s3_cognitive_restructuring": {
+        "title": "Cognitive Restructuring",
+        "description": "Letting go of sleep anxiety.",
+        "duration": "12 min"
+      },
+      "s4_stimulus_control": {
+        "title": "Stimulus Control",
+        "description": "Re-associating your bed with sleep, not wakefulness.",
+        "duration": "8 min"
+      },
+      "s5_relaxation": {
+        "title": "Relaxation Techniques",
+        "description": "Breathing, progressive muscle relaxation and mindfulness.",
+        "duration": "15 min"
+      },
+      "s6_relapse_prevention": {
+        "title": "Relapse Prevention",
+        "description": "Maintaining your gains and managing bad nights.",
+        "duration": "10 min"
+      }
+    }
+  },
+  "profile": {
+    "title": "Profile",
+    "program_progress": "Program Progress",
+    "week_of": "Week {{current}} of {{total}}",
+    "started": "Started {{date}}",
+    "settings": "Settings",
+    "notifications": "Notifications",
+    "language": "Language",
+    "privacy": "Privacy",
+    "support": "Support",
+    "sign_out": "Sign Out",
+    "version": "RestEasy v{{version}}"
+  },
+  "common": {
+    "back": "Back",
+    "close": "Close",
+    "save": "Save",
+    "cancel": "Cancel",
+    "continue": "Continue",
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "retry": "Retry",
+    "am": "AM",
+    "pm": "PM"
+  }
+}

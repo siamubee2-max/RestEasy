@@ -1,0 +1,269 @@
+{
+  "welcome": {
+    "title": "Bienvenido a\nRestEasy",
+    "subtitle": "Un programa clínicamente probado para ayudarte a dormir de nuevo. Sin rastreadores. Sin puntuaciones. Solo ciencia.",
+    "cta": "Comenzar mi viaje",
+    "disclaimer": "Basado en la Terapia Cognitivo-Conductual para el Insomnio (TCC-I)"
+  },
+  "home": {
+    "greeting_morning": "Buenos días, {{name}}",
+    "greeting_afternoon": "Buenas tardes, {{name}}",
+    "greeting_evening": "Buenas noches, {{name}}",
+    "greeting_night": "Buenas noches, {{name}}",
+    "week_progress": "Semana {{current}} de {{total}}",
+    "sleep_window": "Tu ventana de sueño",
+    "morning_journal": "Diario matutino",
+    "night_mode": "Modo nocturno",
+    "program_complete": "¡Programa completado!"
+  },
+  "journal": {
+    "title": "Diario matutino",
+    "subtitle": "¿Cómo fue tu noche?",
+    "bedtime_question": "¿A qué hora te acostaste?",
+    "fall_asleep_question": "¿Cuánto tiempo tardaste en dormirte?",
+    "wakeups_question": "¿Cuántas veces te despertaste?",
+    "wake_time_question": "¿A qué hora te despertaste?",
+    "out_of_bed_question": "¿A qué hora te levantaste de la cama?",
+    "minutes": "{{count}} min",
+    "times": "{{count}} veces",
+    "save": "Guardar",
+    "saved": "¡Entrada guardada!",
+    "already_done": "Diario ya completado hoy",
+    "efficiency": "Eficiencia del sueño: {{value}}%"
+  },
+  "weekly": {
+    "title": "Revisión semana {{week}}",
+    "subtitle": "Tu viaje de sueño esta semana",
+    "avg_efficiency": "Eficiencia media: {{value}}%",
+    "window_same": "Tu ventana de sueño se mantiene igual esta semana",
+    "window_extended": "Tu ventana se amplía 15 min esta semana",
+    "window_reduced": "Tu ventana se reduce 15 min esta semana",
+    "module_unlocked": "Nuevo módulo desbloqueado",
+    "start_module": "Iniciar módulo",
+    "days": ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"]
+  },
+  "night": {
+    "title": "Modo nocturno",
+    "breathe": "Respira",
+    "breathe_in": "Inhala",
+    "breathe_hold": "Mantén",
+    "breathe_out": "Exhala",
+    "cant_sleep": "No puedo dormir — Levantarme",
+    "relaxation": "Ejercicio de relajación",
+    "reminder": "Recuerda: si no estás dormido en 20 minutos, está bien levantarse",
+    "get_up_title": "Levántate",
+    "get_up_text": "Ve a otra habitación. Haz algo tranquilo hasta que te sientas somnoliento. Vuelve a la cama solo cuando tengas sueño.",
+    "return_to_bed": "Volver a la cama"
+  },
+  "therapy": {
+    "title": "Terapia",
+    "subtitle": "Módulos cognitivos",
+    "locked": "Disponible en semana {{week}}",
+    "completed": "Completado",
+    "in_progress": "En progreso",
+    "start": "Comenzar",
+    "continue": "Continuar",
+    "modules": {
+      "s1_sleep_education": {
+        "title": "Entender el sueño",
+        "description": "Los fundamentos de la biología del sueño y por qué se desarrolla el insomnio.",
+        "duration": "8 min",
+        "content": {
+          "intro": "El sueño es una necesidad biológica fundamental, no un lujo. Tu cerebro y cuerpo dependen de él para repararse y consolidar la memoria.",
+          "section1_title": "Los dos sistemas del sueño",
+          "section1_body": "Tu sueño está controlado por dos sistemas: el ritmo circadiano (tu reloj interno de 24 horas) y la presión homeostática del sueño (la acumulación de adenosina durante la vigilia). La TCC-I actúa sobre ambos.",
+          "section2_title": "Por qué el insomnio persiste",
+          "section2_body": "El insomnio crónico se mantiene por un ciclo de hiperactivación, pensamientos negativos sobre el sueño y comportamientos contraproducentes como pasar demasiado tiempo en cama.",
+          "section3_title": "La buena noticia",
+          "section3_body": "La TCC-I tiene una tasa de éxito del 70-80% en estudios clínicos. Es más efectiva que los somníferos a largo plazo y sin efectos secundarios.",
+          "key_insight": "No necesitas 'forzar' el sueño. Tu trabajo es crear las condiciones para que ocurra naturalmente."
+        }
+      },
+      "s2_sleep_restriction": {
+        "title": "Restricción del sueño",
+        "description": "Cómo y por qué reducir el tiempo en cama mejora la calidad del sueño.",
+        "duration": "10 min",
+        "content": {
+          "intro": "La restricción del sueño es la técnica más poderosa de la TCC-I. Puede parecer contraintuitiva, pero funciona.",
+          "section1_title": "El principio",
+          "section1_body": "Al limitar el tiempo en cama a las horas que realmente duermes, aumentas la presión homeostática del sueño. Esto hace que te duermas más rápido y que el sueño sea más profundo y continuo.",
+          "section2_title": "Tu ventana de sueño",
+          "section2_body": "La aplicación calcula tu ventana de sueño basándose en tu diario. Esta ventana se ajusta semanalmente según tu eficiencia del sueño.",
+          "section3_title": "Reglas importantes",
+          "section3_body": "1. No te acuestes antes de tu hora de inicio. 2. Levántate siempre a la misma hora. 3. No hagas siestas. 4. La ventana mínima es de 5 horas.",
+          "key_insight": "La somnolencia inicial es normal y temporal. Es una señal de que el tratamiento está funcionando."
+        }
+      },
+      "s3_cognitive_restructuring": {
+        "title": "Reestructuración cognitiva",
+        "description": "Soltar la ansiedad relacionada con el sueño.",
+        "duration": "12 min",
+        "content": {
+          "intro": "Los pensamientos sobre el sueño pueden convertirse en el mayor obstáculo para dormir. Este módulo te enseña a identificarlos y transformarlos.",
+          "section1_title": "Pensamientos comunes",
+          "section1_body": "'Si no duermo 8 horas, mañana seré inútil.' 'Llevo semanas sin dormir bien, algo debe estar muy mal.' 'Nunca podré dormir normalmente.' Estos pensamientos son comprensibles pero inexactos.",
+          "section2_title": "El ciclo de la ansiedad",
+          "section2_body": "Pensamientos negativos → Activación fisiológica → Dificultad para dormir → Más pensamientos negativos. La reestructuración cognitiva rompe este ciclo.",
+          "section3_title": "Técnica: el interrogatorio socrático",
+          "section3_body": "Pregúntate: ¿Es este pensamiento 100% cierto? ¿Cuál es la evidencia en contra? ¿Cuál es el peor caso real? ¿Cómo lo vería un amigo compasivo?",
+          "key_insight": "El objetivo no es pensar positivamente, sino pensar con precisión y compasión."
+        }
+      },
+      "s4_stimulus_control": {
+        "title": "Control de estímulos",
+        "description": "Reasociar tu cama con el sueño, no con la vigilia.",
+        "duration": "8 min",
+        "content": {
+          "intro": "Si pasas horas despierto en cama, tu cerebro aprende a asociar la cama con la vigilia y la ansiedad. El control de estímulos revierte este aprendizaje.",
+          "section1_title": "Las 5 reglas",
+          "section1_body": "1. Usa la cama solo para dormir y sexo. 2. Si no puedes dormir en 20 min, levántate. 3. Vuelve a la cama solo cuando tengas sueño. 4. Levántate siempre a la misma hora. 5. No hagas siestas.",
+          "section2_title": "Por qué funciona",
+          "section2_body": "Estas reglas utilizan el condicionamiento clásico para reconectar la cama con el sueño. Con el tiempo, acostarte se convierte en una señal automática para dormir.",
+          "section3_title": "La primera semana",
+          "section3_body": "Puede ser difícil al principio. Es normal levantarse varias veces por noche. La persistencia es clave.",
+          "key_insight": "La cama debe ser un lugar de sueño, no de lucha."
+        }
+      },
+      "s5_relaxation": {
+        "title": "Técnicas de relajación",
+        "description": "Respiración, relajación muscular progresiva y mindfulness.",
+        "duration": "15 min",
+        "content": {
+          "intro": "La relajación no es solo agradable — es una habilidad que reduce la hiperactivación fisiológica que mantiene el insomnio.",
+          "section1_title": "Respiración 4-2-6",
+          "section1_body": "Inhala durante 4 segundos, mantén 2 segundos, exhala durante 6 segundos. La exhalación larga activa el sistema nervioso parasimpático y reduce la frecuencia cardíaca.",
+          "section2_title": "Relajación muscular progresiva",
+          "section2_body": "Tensa y relaja sistemáticamente cada grupo muscular, de los pies a la cabeza. Esto enseña a tu cuerpo a reconocer y liberar la tensión.",
+          "section3_title": "Mindfulness del sueño",
+          "section3_body": "Observa tus pensamientos y sensaciones sin juzgarlos. No intentes controlar el sueño — simplemente observa. El sueño viene cuando dejas de perseguirlo.",
+          "key_insight": "Practica estas técnicas durante el día también, no solo cuando no puedes dormir."
+        }
+      },
+      "s6_relapse_prevention": {
+        "title": "Prevención de recaídas",
+        "description": "Mantener tus logros y gestionar las malas noches.",
+        "duration": "10 min",
+        "content": {
+          "intro": "Has completado el programa. Ahora tienes las herramientas para mantener un sueño saludable de por vida.",
+          "section1_title": "Las malas noches son normales",
+          "section1_body": "Todo el mundo tiene malas noches. La diferencia ahora es que sabes que no son permanentes y tienes herramientas para manejarlas.",
+          "section2_title": "Señales de alerta",
+          "section2_body": "Si notas que tu eficiencia del sueño cae por debajo del 80% durante más de una semana, es el momento de volver a las técnicas básicas: restricción del sueño y control de estímulos.",
+          "section3_title": "Tu plan de mantenimiento",
+          "section3_body": "1. Mantén horarios regulares. 2. Sigue usando el diario si lo necesitas. 3. Aplica las técnicas de relajación cuando sientas estrés. 4. Recuerda: tienes el control.",
+          "key_insight": "El insomnio no define quién eres. Ahora tienes las herramientas para manejarlo."
+        }
+      }
+    }
+  },
+  "isi": {
+    "title": "Índice de Gravedad del Insomnio",
+    "subtitle": "7 preguntas — 2 minutos",
+    "instruction": "Para cada pregunta, indica la gravedad de tus problemas de sueño durante las ÚLTIMAS 2 SEMANAS.",
+    "questions": {
+      "q1": "Dificultad para conciliar el sueño",
+      "q2": "Dificultad para mantener el sueño",
+      "q3": "Problemas para despertarse demasiado temprano",
+      "q4": "¿Estás satisfecho con tu sueño actual?",
+      "q5": "¿En qué medida tus problemas de sueño interfieren con tu funcionamiento diario?",
+      "q6": "¿En qué medida son visibles para los demás los deterioros en tu calidad de vida?",
+      "q7": "¿Qué tan preocupado/angustiado estás por tus problemas de sueño?"
+    },
+    "scale_none": "Ninguno",
+    "scale_mild": "Leve",
+    "scale_moderate": "Moderado",
+    "scale_severe": "Grave",
+    "scale_very_severe": "Muy grave",
+    "scale_not_at_all": "Para nada",
+    "scale_very": "Mucho",
+    "severity": {
+      "none": "Sin insomnio clínicamente significativo",
+      "subthreshold": "Insomnio subumbral",
+      "moderate": "Insomnio moderado",
+      "severe": "Insomnio grave"
+    },
+    "result_title": "Tu puntuación ISI: {{score}}/28",
+    "result_subtitle": "{{severity}}",
+    "improvement": "Mejora desde el inicio: {{points}} puntos",
+    "save": "Guardar puntuación"
+  },
+  "paywall": {
+    "title": "Desbloquea tu sueño",
+    "subtitle": "Acceso completo al programa TCC-I de 6 semanas",
+    "trial_badge": "7 días gratis",
+    "features": [
+      "Programa TCC-I completo de 6 semanas",
+      "Diario del sueño ilimitado",
+      "Modo nocturno con respiración guiada",
+      "Ejercicios de audio con voz guiada",
+      "Gráficos de progreso detallados",
+      "Módulos cognitivos desbloqueados",
+      "Sincronización con Apple Health / Google Fit"
+    ],
+    "monthly_label": "Mensual",
+    "annual_label": "Anual",
+    "annual_savings": "Ahorra {{percent}}%",
+    "per_month": "/mes",
+    "per_year": "/año",
+    "cta_trial": "Comenzar prueba gratuita de 7 días",
+    "cta_subscribe": "Suscribirse ahora",
+    "restore": "Restaurar compras",
+    "terms": "Al continuar, aceptas nuestros Términos de servicio y Política de privacidad.",
+    "cancel_anytime": "Cancela en cualquier momento"
+  },
+  "streak": {
+    "days": "{{count}} días",
+    "current": "Racha actual",
+    "longest": "Racha más larga",
+    "badges": {
+      "first_entry": "Primera entrada",
+      "week_1": "1 semana de constancia",
+      "week_2": "2 semanas de constancia",
+      "month_1": "1 mes de constancia",
+      "efficiency_85": "Eficiencia ≥ 85%",
+      "efficiency_90": "Eficiencia ≥ 90%",
+      "program_complete": "Programa completado",
+      "night_owl": "Búho nocturno",
+      "early_bird": "Madrugador"
+    }
+  },
+  "profile": {
+    "title": "Perfil",
+    "program_progress": "Progreso del programa",
+    "week_of": "Semana {{current}} de {{total}}",
+    "started": "Iniciado el {{date}}",
+    "settings": "Configuración",
+    "notifications": "Notificaciones",
+    "language": "Idioma",
+    "privacy": "Privacidad",
+    "support": "Soporte",
+    "sign_out": "Cerrar sesión",
+    "version": "RestEasy v{{version}}",
+    "health_sync": "Sincronización de salud",
+    "health_sync_desc": "Importar datos de Apple Health / Google Fit",
+    "export_data": "Exportar mis datos",
+    "delete_account": "Eliminar mi cuenta"
+  },
+  "notifications": {
+    "journal_reminder_title": "¿Cómo fue tu noche?",
+    "journal_reminder_body": "Tómate 60 segundos para completar tu diario matutino.",
+    "bedtime_reminder_title": "Tu ventana de sueño comienza pronto",
+    "bedtime_reminder_body": "Prepárate para acostarte a las {{time}}.",
+    "streak_title": "¡{{count}} días de racha!",
+    "streak_body": "Sigue así. Tu sueño mejora cada día.",
+    "weekly_review_title": "Tu revisión semanal está lista",
+    "weekly_review_body": "Semana {{week}} completada. Mira tu progreso."
+  },
+  "common": {
+    "back": "Atrás",
+    "close": "Cerrar",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "continue": "Continuar",
+    "loading": "Cargando...",
+    "error": "Ha ocurrido un error",
+    "retry": "Reintentar",
+    "am": "AM",
+    "pm": "PM"
+  }
+}

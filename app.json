@@ -1,0 +1,58 @@
+{
+  "expo": {
+    "name": "RestEasy",
+    "slug": "resteasy",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0B1D3A"
+    },
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.resteasy.app",
+      "buildNumber": "1",
+      "infoPlist": {
+        "NSCameraUsageDescription": "RestEasy n'utilise pas la caméra.",
+        "NSMicrophoneUsageDescription": "RestEasy n'utilise pas le microphone.",
+        "UIBackgroundModes": ["audio"]
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#0B1D3A"
+      },
+      "package": "com.resteasy.app",
+      "versionCode": 1,
+      "permissions": []
+    },
+    "web": {
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro"
+    },
+    "plugins": [
+      "expo-localization",
+      [
+        "expo-build-properties",
+        {
+          "ios": {
+            "deploymentTarget": "15.1"
+          },
+          "android": {
+            "minSdkVersion": 24
+          }
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "4337d5be-b498-47bb-9a70-ce30ceb2cb88"
+      }
+    },
+    "owner": "chemicaltof"
+  }
+}

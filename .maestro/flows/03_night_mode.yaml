@@ -1,0 +1,43 @@
+# RestEasy — Maestro E2E Test: Night Mode Flow
+# Tests the night mode breathing animation and actions
+#
+# Run: maestro test .maestro/flows/03_night_mode.yaml
+
+appId: com.resteasy.app
+name: "Night Mode Flow"
+tags:
+  - night_mode
+
+---
+
+- launchApp:
+    clearState: false
+
+# Open Night Mode from Home
+- tapOn:
+    text: "Mode nuit"
+
+- assertVisible:
+    text: "Respirer"
+
+- takeScreenshot: "09_night_mode_breathing"
+
+# Wait for breathing animation
+- waitForAnimationToEnd:
+    timeout: 3000
+
+# Test "Get up" button
+- assertVisible:
+    text: "Je n'arrive pas à dormir"
+
+- assertVisible:
+    text: "Exercice de relaxation"
+
+# Tap relaxation
+- tapOn:
+    text: "Exercice de relaxation"
+
+- takeScreenshot: "10_night_mode_relaxation"
+
+# Go back
+- pressKey: Back
