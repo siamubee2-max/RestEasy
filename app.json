@@ -15,9 +15,16 @@
       "supportsTablet": false,
       "bundleIdentifier": "com.resteasy.app",
       "buildNumber": "1",
+      "entitlements": {
+        "com.apple.developer.healthkit": true,
+        "com.apple.developer.healthkit.background-delivery": false
+      },
       "infoPlist": {
-        "NSCameraUsageDescription": "RestEasy n'utilise pas la caméra.",
-        "NSMicrophoneUsageDescription": "RestEasy n'utilise pas le microphone.",
+        "NSCameraUsageDescription": "RestEasy n'accède pas à la caméra. Cette clé est requise par certaines bibliothèques tierces incluses dans l'application.",
+        "NSMicrophoneUsageDescription": "RestEasy utilise la session audio pour la lecture de sons de relaxation en arrière-plan. Le microphone n'est pas enregistré.",
+        "NSHealthShareUsageDescription": "RestEasy lit vos données de sommeil Apple Santé pour pré-remplir votre journal et améliorer votre suivi du programme TCC-I.",
+        "NSHealthUpdateUsageDescription": "RestEasy enregistre vos séances de pleine conscience (exercices de respiration) dans Apple Santé.",
+        "ITSAppUsesNonExemptEncryption": false,
         "UIBackgroundModes": ["audio"]
       }
     },
@@ -36,6 +43,15 @@
     },
     "plugins": [
       "expo-localization",
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/icon.png",
+          "color": "#0B1D3A",
+          "sounds": [],
+          "mode": "production"
+        }
+      ],
       [
         "expo-build-properties",
         {
