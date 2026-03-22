@@ -40,7 +40,15 @@
     "window_reduced": "Sua janela é reduzida em 15 min esta semana",
     "module_unlocked": "Novo módulo desbloqueado",
     "start_module": "Iniciar módulo",
-    "days": ["Seg", "Ter", "Qua", "Qui", "Sex", "Sáb", "Dom"]
+    "days": [
+      "Seg",
+      "Ter",
+      "Qua",
+      "Qui",
+      "Sex",
+      "Sáb",
+      "Dom"
+    ]
   },
   "night": {
     "title": "Modo noturno",
@@ -186,7 +194,17 @@
     "result_title": "Sua pontuação ISI: {{score}}/28",
     "result_subtitle": "{{severity}}",
     "improvement": "Melhora desde o início: {{points}} pontos",
-    "save": "Salvar pontuação"
+    "save": "Salvar pontuação",
+    "severity_none_label": "Sem insônia",
+    "severity_none_desc": "Seu sono está dentro das normas clínicas.",
+    "severity_sub_label": "Insônia sublimiar",
+    "severity_sub_desc": "Algumas dificuldades de sono, mas gerenciáveis.",
+    "severity_moderate_label": "Insônia moderada",
+    "severity_moderate_desc": "O programa TCC-I é particularmente adequado para a sua situação.",
+    "severity_severe_label": "Insônia grave",
+    "severity_severe_desc": "O programa pode ajudá-lo significativamente.",
+    "week_header": "Semana {{week}} — 7 perguntas",
+    "skip": "Pular"
   },
   "paywall": {
     "title": "Desbloqueie seu sono",
@@ -324,5 +342,24 @@
     "add": "Adicionar",
     "patient_added": "Paciente adicionado",
     "patient_added_message": "Paciente adicionado à sua lista."
+  },
+  "progress": {
+    "title": "Meu progresso",
+    "subtitle": "Programa — Semana {{current}} de {{total}}",
+    "efficiency_improvement": "Melhora de eficiência",
+    "weeks_completed": "Semanas concluídas",
+    "nights_logged": "Noites registradas",
+    "chart_efficiency": "Eficiência do sono",
+    "chart_target_efficiency": "Meta: ≥ 85%",
+    "chart_onset": "Latência de início do sono",
+    "chart_target_onset": "Meta: ≤ 20 min",
+    "chart_isi": "Pontuação ISI (insônia)",
+    "chart_target_isi": "Meta: ≤ 7 (sem insônia)",
+    "table_title": "Detalhe por semana",
+    "table_week": "Sem.",
+    "table_efficiency": "Ef.",
+    "table_onset": "Latência",
+    "table_nights": "Noites",
+    "no_data": "Dados insuficientes"
   }
 }

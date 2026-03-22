@@ -57,12 +57,14 @@ function LineChart({
     .map((v, i) => ({ v, i }))
     .filter(p => p.v !== null) as { v: number; i: number }[];
 
+  const { t } = useTranslation();
+
   if (validPoints.length < 2) {
     return (
       <View style={[chartStyles.container, { height: CHART_HEIGHT + 24 }]}>
         <Text style={chartStyles.label}>{label}</Text>
         <View style={chartStyles.noData}>
-          <Text style={chartStyles.noDataText}>Données insuffisantes</Text>
+          <Text style={chartStyles.noDataText}>{t('progress.no_data')}</Text>
         </View>
       </View>
     );
@@ -161,8 +163,7 @@ function LineChart({
 // ─── Main Screen ──────────────────────────────────────────────────────────────
 
 export function ProgressScreen() {
-  const { i18n } = useTranslation();
-  const lang = i18n.language.split('-')[0];
+  const { t } = useTranslation();
   const [loading, setLoading] = useState(true);
   const [weeklyData, setWeeklyData] = useState<WeeklyData[]>([]);
   const [currentWeek, setCurrentWeek] = useState(1);
@@ -224,8 +225,6 @@ export function ProgressScreen() {
     }
   };
 
-  const t = (fr: string, en: string) => lang === 'fr' ? fr : en;
-
   if (loading) {
     return (
       <View style={styles.loader}>
@@ -252,9 +251,9 @@ export function ProgressScreen() {
       <LinearGradient colors={[colors.deepNavy, '#0D2347']} style={StyleSheet.absoluteFill} />
       <SafeAreaView style={styles.safe}>
         <View style={styles.header}>
-          <Text style={styles.title}>{t('Ma progression', 'My Progress')}</Text>
+          <Text style={styles.title}>{t('progress.title')}</Text>
           <Text style={styles.subtitle}>
-            {t(`Programme — Semaine ${currentWeek} sur 6`, `Program — Week ${currentWeek} of 6`)}
+            {t('progress.subtitle', { current: currentWeek, total: 6 })}
           </Text>
         </View>
 
@@ -266,13 +265,13 @@ export function ProgressScreen() {
               <View style={styles.summaryCard}>
                 <Text style={styles.summaryValue}>+{improvement}%</Text>
                 <Text style={styles.summaryLabel}>
-                  {t('Amélioration efficacité', 'Efficiency improvement')}
+                  {t('progress.efficiency_improvement')}
                 </Text>
               </View>
               <View style={styles.summaryCard}>
                 <Text style={styles.summaryValue}>{completedWeeks.length}/6</Text>
                 <Text style={styles.summaryLabel}>
-                  {t('Semaines complétées', 'Weeks completed')}
+                  {t('progress.weeks_completed')}
                 </Text>
               </View>
               <View style={styles.summaryCard}>
@@ -280,7 +279,7 @@ export function ProgressScreen() {
                   {weeklyData.reduce((s, d) => s + d.entry_count, 0)}
                 </Text>
                 <Text style={styles.summaryLabel}>
-                  {t('Nuits enregistrées', 'Nights logged')}
+                  {t('progress.nights_logged')}
                 </Text>
               </View>
             </View>
@@ -294,10 +293,10 @@ export function ProgressScreen() {
               minY={60}
               maxY={100}
               unit="%"
-              label={t('Efficacité du sommeil', 'Sleep Efficiency')}
+              label={t('progress.chart_efficiency')}
             />
             <Text style={styles.chartNote}>
-              {t('Objectif : ≥ 85%', 'Target: ≥ 85%')}
+              {t('progress.chart_target_efficiency')}
             </Text>
           </View>
 
@@ -309,10 +308,10 @@ export function ProgressScreen() {
               minY={0}
               maxY={60}
               unit=" min"
-              label={t('Latence d\'endormissement', 'Sleep Onset Latency')}
+              label={t('progress.chart_onset')}
             />
             <Text style={styles.chartNote}>
-              {t('Objectif : ≤ 20 min', 'Target: ≤ 20 min')}
+              {t('progress.chart_target_onset')}
             </Text>
           </View>
 
@@ -324,31 +323,31 @@ export function ProgressScreen() {
               minY={0}
               maxY={28}
               unit=""
-              label={t('Score ISI (insomnie)', 'ISI Score (insomnia)')}
+              label={t('progress.chart_isi')}
             />
             <Text style={styles.chartNote}>
-              {t('Objectif : ≤ 7 (pas d\'insomnie)', 'Target: ≤ 7 (no insomnia)')}
+              {t('progress.chart_target_isi')}
             </Text>
           </View>
 
           {/* Week-by-week table */}
           <View style={styles.tableCard}>
             <Text style={styles.tableTitle}>
-              {t('Détail par semaine', 'Week-by-week detail')}
+              {t('progress.table_title')}
             </Text>
             <View style={styles.tableHeader}>
               <Text style={[styles.tableCell, styles.tableCellHeader]}>
-                {t('Sem.', 'Week')}
+                {t('progress.table_week')}
               </Text>
               <Text style={[styles.tableCell, styles.tableCellHeader]}>
-                {t('Eff.', 'Eff.')}
+                {t('progress.table_efficiency')}
               </Text>
               <Text style={[styles.tableCell, styles.tableCellHeader]}>
-                {t('Latence', 'Onset')}
+                {t('progress.table_onset')}
               </Text>
               <Text style={[styles.tableCell, styles.tableCellHeader]}>ISI</Text>
               <Text style={[styles.tableCell, styles.tableCellHeader]}>
-                {t('Nuits', 'Nights')}
+                {t('progress.table_nights')}
               </Text>
             </View>
             {weeklyData.map((d) => (

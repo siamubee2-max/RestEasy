@@ -40,7 +40,15 @@
     "window_reduced": "Tu ventana se reduce 15 min esta semana",
     "module_unlocked": "Nuevo módulo desbloqueado",
     "start_module": "Iniciar módulo",
-    "days": ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"]
+    "days": [
+      "Lun",
+      "Mar",
+      "Mié",
+      "Jue",
+      "Vie",
+      "Sáb",
+      "Dom"
+    ]
   },
   "night": {
     "title": "Modo nocturno",
@@ -186,7 +194,17 @@
     "result_title": "Tu puntuación ISI: {{score}}/28",
     "result_subtitle": "{{severity}}",
     "improvement": "Mejora desde el inicio: {{points}} puntos",
-    "save": "Guardar puntuación"
+    "save": "Guardar puntuación",
+    "severity_none_label": "Sin insomnio",
+    "severity_none_desc": "Tu sueño está dentro de las normas clínicas.",
+    "severity_sub_label": "Insomnio leve",
+    "severity_sub_desc": "Algunas dificultades para dormir, pero manejables.",
+    "severity_moderate_label": "Insomnio moderado",
+    "severity_moderate_desc": "El programa TCC-I es especialmente adecuado para tu situación.",
+    "severity_severe_label": "Insomnio grave",
+    "severity_severe_desc": "El programa puede ayudarte significativamente.",
+    "week_header": "Semana {{week}} — 7 preguntas",
+    "skip": "Omitir"
   },
   "paywall": {
     "title": "Desbloquea tu sueño",
@@ -324,5 +342,24 @@
     "add": "Agregar",
     "patient_added": "Paciente agregado",
     "patient_added_message": "Paciente agregado a tu lista."
+  },
+  "progress": {
+    "title": "Mi progreso",
+    "subtitle": "Programa — Semana {{current}} de {{total}}",
+    "efficiency_improvement": "Mejora de eficiencia",
+    "weeks_completed": "Semanas completadas",
+    "nights_logged": "Noches registradas",
+    "chart_efficiency": "Eficiencia del sueño",
+    "chart_target_efficiency": "Objetivo: ≥ 85%",
+    "chart_onset": "Latencia de inicio del sueño",
+    "chart_target_onset": "Objetivo: ≤ 20 min",
+    "chart_isi": "Puntuación ISI (insomnio)",
+    "chart_target_isi": "Objetivo: ≤ 7 (sin insomnio)",
+    "table_title": "Detalle por semana",
+    "table_week": "Sem.",
+    "table_efficiency": "Ef.",
+    "table_onset": "Latencia",
+    "table_nights": "Noches",
+    "no_data": "Datos insuficientes"
   }
 }

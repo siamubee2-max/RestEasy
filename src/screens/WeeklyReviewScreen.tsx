@@ -26,29 +26,26 @@ interface DayData {
   efficiency: number;
 }
 
-const MOCK_DATA: DayData[] = [
-  { day: 'Lun', efficiency: 78 },
-  { day: 'Mar', efficiency: 82 },
-  { day: 'Mer', efficiency: 85 },
-  { day: 'Jeu', efficiency: 90 },
-  { day: 'Ven', efficiency: 92 },
-  { day: 'Sam', efficiency: 88 },
-  { day: 'Dim', efficiency: 80 },
-];
+const MOCK_EFFICIENCIES = [78, 82, 85, 90, 92, 88, 80];
 
-const MODULES = [
-  { id: 's3_cognitive_restructuring', week: 3 },
-  { id: 's4_stimulus_control', week: 4 },
-];
+const MODULE_IDS: Record<number, string> = {
+  1: 's1_sleep_education',
+  2: 's2_sleep_restriction',
+  3: 's3_cognitive_restructuring',
+  4: 's4_stimulus_control',
+  5: 's5_relaxation',
+  6: 's6_relapse_prevention',
+};
 
 interface WeeklyReviewScreenProps {
   navigation: any;
   currentWeek?: number;
-  data?: DayData[];
+  efficiencies?: number[];
   avgEfficiency?: number;
 }
 
 function BarChart({ data, avgEfficiency }: { data: DayData[]; avgEfficiency: number }) {
+  const { t } = useTranslation();
   const maxVal = 100;
   const minVal = 60;
   const range = maxVal - minVal;
@@ -166,10 +163,15 @@ const chartStyles = StyleSheet.create({
 export function WeeklyReviewScreen({
   navigation,
   currentWeek = 3,
-  data = MOCK_DATA,
+  efficiencies = MOCK_EFFICIENCIES,
   avgEfficiency = 85,
 }: WeeklyReviewScreenProps) {
   const { t } = useTranslation();
+  const days: string[] = t('weekly.days', { returnObjects: true }) as string[];
+  const data: DayData[] = efficiencies.map((efficiency, i) => ({
+    day: days[i] ?? String(i + 1),
+    efficiency,
+  }));
 
   const windowMessage = avgEfficiency >= 85
     ? t('weekly.window_same')
@@ -212,12 +214,10 @@ export function WeeklyReviewScreen({
             <View style={styles.moduleContent}>
               <Text style={styles.moduleUnlocked}>{t('weekly.module_unlocked')}</Text>
               <Text style={styles.moduleTitle}>
-                {t(`therapy.modules.s${currentWeek}_cognitive_restructuring.title`, {
-                  defaultValue: 'Restructuration cognitive : Lâcher prise sur l\'anxiété du sommeil',
-                })}
+                {t(`therapy.modules.${MODULE_IDS[currentWeek] ?? MODULE_IDS[1]}.title`)}
               </Text>
               <Text style={styles.moduleDescription}>
-                Apprenez des techniques pour recadrer vos pensées sur le sommeil.
+                {t(`therapy.modules.${MODULE_IDS[currentWeek] ?? MODULE_IDS[1]}.description`)}
               </Text>
               <TouchableOpacity onPress={() => navigation.navigate('Therapy')}>
                 <Text style={styles.startModule}>{t('weekly.start_module')}</Text>

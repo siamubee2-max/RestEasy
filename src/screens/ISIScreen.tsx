@@ -24,136 +24,51 @@ interface ISIScreenProps {
   onSkip?: () => void;
 }
 
-interface ISIQuestion {
-  id: number;
-  fr: string;
-  en: string;
-  es: string;
-  de: string;
-  labels_fr: string[];
-  labels_en: string[];
-}
+const ISI_QUESTION_IDS = [1, 2, 3, 4, 5, 6, 7];
 
-const ISI_QUESTIONS: ISIQuestion[] = [
-  {
-    id: 1,
-    fr: "Difficulté à vous endormir",
-    en: "Difficulty falling asleep",
-    es: "Dificultad para conciliar el sueño",
-    de: "Schwierigkeiten beim Einschlafen",
-    labels_fr: ["Aucune", "Légère", "Modérée", "Sévère", "Très sévère"],
-    labels_en: ["None", "Mild", "Moderate", "Severe", "Very severe"],
-  },
-  {
-    id: 2,
-    fr: "Difficulté à rester endormi(e)",
-    en: "Difficulty staying asleep",
-    es: "Dificultad para mantener el sueño",
-    de: "Schwierigkeiten beim Durchschlafen",
-    labels_fr: ["Aucune", "Légère", "Modérée", "Sévère", "Très sévère"],
-    labels_en: ["None", "Mild", "Moderate", "Severe", "Very severe"],
-  },
-  {
-    id: 3,
-    fr: "Problème de réveil trop tôt",
-    en: "Problem waking up too early",
-    es: "Problema de despertar demasiado temprano",
-    de: "Problem des zu frühen Aufwachens",
-    labels_fr: ["Aucun", "Léger", "Modéré", "Sévère", "Très sévère"],
-    labels_en: ["None", "Mild", "Moderate", "Severe", "Very severe"],
-  },
-  {
-    id: 4,
-    fr: "Satisfaction par rapport à votre sommeil actuel",
-    en: "Satisfaction with your current sleep pattern",
-    es: "Satisfacción con su patrón de sueño actual",
-    de: "Zufriedenheit mit Ihrem aktuellen Schlafmuster",
-    labels_fr: ["Très satisfait(e)", "Satisfait(e)", "Neutre", "Insatisfait(e)", "Très insatisfait(e)"],
-    labels_en: ["Very satisfied", "Satisfied", "Neutral", "Dissatisfied", "Very dissatisfied"],
-  },
-  {
-    id: 5,
-    fr: "Dans quelle mesure vos problèmes de sommeil perturbent-ils votre fonctionnement quotidien ?",
-    en: "How much do your sleep problems interfere with your daily functioning?",
-    es: "¿En qué medida sus problemas de sueño interfieren con su funcionamiento diario?",
-    de: "Wie sehr beeinträchtigen Ihre Schlafprobleme Ihr tägliches Funktionieren?",
-    labels_fr: ["Pas du tout", "Un peu", "Modérément", "Beaucoup", "Énormément"],
-    labels_en: ["Not at all", "A little", "Somewhat", "Much", "Very much"],
-  },
-  {
-    id: 6,
-    fr: "Dans quelle mesure vos problèmes de sommeil sont-ils visibles pour les autres ?",
-    en: "How noticeable to others do you think your sleep problem is?",
-    es: "¿En qué medida cree que su problema de sueño es notable para los demás?",
-    de: "Wie auffällig ist Ihr Schlafproblem für andere?",
-    labels_fr: ["Pas du tout", "Un peu", "Modérément", "Beaucoup", "Énormément"],
-    labels_en: ["Not at all", "A little", "Somewhat", "Much", "Very much"],
-  },
-  {
-    id: 7,
-    fr: "Dans quelle mesure êtes-vous préoccupé(e) par vos problèmes de sommeil ?",
-    en: "How worried/distressed are you about your current sleep problem?",
-    es: "¿Cuánto le preocupan sus problemas de sueño actuales?",
-    de: "Wie besorgt/belastet sind Sie durch Ihr aktuelles Schlafproblem?",
-    labels_fr: ["Pas du tout", "Un peu", "Modérément", "Beaucoup", "Énormément"],
-    labels_en: ["Not at all", "A little", "Somewhat", "Much", "Very much"],
-  },
-];
+type TFunction = (key: string) => string;
 
-function getISISeverity(score: number, lang: string): { label: string; color: string; description: string } {
+function getISISeverity(score: number, t: TFunction): { label: string; color: string; description: string } {
   if (score <= 7) return {
-    label: lang === 'fr' ? 'Pas d\'insomnie' : 'No insomnia',
+    label: t('isi.severity_none_label'),
     color: colors.sage,
-    description: lang === 'fr'
-      ? 'Votre sommeil est dans la norme clinique.'
-      : 'Your sleep is within clinical norms.',
+    description: t('isi.severity_none_desc'),
   };
   if (score <= 14) return {
-    label: lang === 'fr' ? 'Insomnie légère' : 'Subthreshold insomnia',
+    label: t('isi.severity_sub_label'),
     color: colors.warmPeach,
-    description: lang === 'fr'
-      ? 'Quelques difficultés de sommeil, mais gérables.'
-      : 'Some sleep difficulties, but manageable.',
+    description: t('isi.severity_sub_desc'),
   };
   if (score <= 21) return {
-    label: lang === 'fr' ? 'Insomnie modérée' : 'Moderate insomnia',
+    label: t('isi.severity_moderate_label'),
     color: '#F5A623',
-    description: lang === 'fr'
-      ? 'Le programme TCC-I est particulièrement adapté à votre situation.'
-      : 'The CBT-I program is particularly suited to your situation.',
+    description: t('isi.severity_moderate_desc'),
   };
   return {
-    label: lang === 'fr' ? 'Insomnie sévère' : 'Severe insomnia',
+    label: t('isi.severity_severe_label'),
     color: '#E05252',
-    description: lang === 'fr'
-      ? 'Insomnie sévère. Le programme peut vous aider significativement.'
-      : 'Severe insomnia. The program can help you significantly.',
+    description: t('isi.severity_severe_desc'),
   };
 }
 
 export function ISIScreen({ programWeek, onComplete, onSkip }: ISIScreenProps) {
-  const { i18n, t } = useTranslation();
-  const lang = i18n.language.split('-')[0];
+  const { t } = useTranslation();
   const [answers, setAnswers] = useState<Record<number, number>>({});
   const [saving, setSaving] = useState(false);
   const [result, setResult] = useState<{ score: number } | null>(null);
 
   useScreenTracking('ISIScreen');
 
-  const allAnswered = ISI_QUESTIONS.every(q => answers[q.id] !== undefined);
+  const allAnswered = ISI_QUESTION_IDS.every(id => answers[id] !== undefined);
   const totalScore = Object.values(answers).reduce((sum, v) => sum + v, 0);
 
-  const getQuestion = (q: ISIQuestion): string => {
-    if (lang === 'fr') return q.fr;
-    if (lang === 'es') return q.es;
-    if (lang === 'de') return q.de;
-    return q.en;
-  };
-
-  const getLabels = (q: ISIQuestion): string[] => {
-    if (lang === 'fr') return q.labels_fr;
-    return q.labels_en;
-  };
+  const scaleLabels = [
+    t('isi.scale_none'),
+    t('isi.scale_mild'),
+    t('isi.scale_moderate'),
+    t('isi.scale_severe'),
+    t('isi.scale_very_severe'),
+  ];
 
   const handleSubmit = async () => {
     if (!allAnswered) return;
@@ -181,7 +96,7 @@ export function ISIScreen({ programWeek, onComplete, onSkip }: ISIScreenProps) {
   };
 
   if (result) {
-    const severity = getISISeverity(result.score, lang);
+    const severity = getISISeverity(result.score, t);
     return (
       <View style={styles.container}>
         <LinearGradient colors={[colors.deepNavy, '#0D2347']} style={StyleSheet.absoluteFill} />
@@ -189,7 +104,7 @@ export function ISIScreen({ programWeek, onComplete, onSkip }: ISIScreenProps) {
           <View style={styles.resultContainer}>
             <Text style={styles.resultEmoji}>📊</Text>
             <Text style={styles.resultTitle}>
-              {lang === 'fr' ? 'Votre score ISI' : 'Your ISI Score'}
+              {t('isi.result_title', { score: result.score })}
             </Text>
             <View style={[styles.scoreBadge, { borderColor: severity.color }]}>
               <Text style={[styles.scoreNumber, { color: severity.color }]}>{result.score}</Text>
@@ -198,7 +113,7 @@ export function ISIScreen({ programWeek, onComplete, onSkip }: ISIScreenProps) {
             <Text style={[styles.severityLabel, { color: severity.color }]}>{severity.label}</Text>
             <Text style={styles.severityDesc}>{severity.description}</Text>
             <PeachButton
-              title={lang === 'fr' ? 'Continuer' : 'Continue'}
+              title={t('common.continue')}
               onPress={() => onComplete(result.score)}
               style={styles.continueBtn}
             />
@@ -213,42 +128,32 @@ export function ISIScreen({ programWeek, onComplete, onSkip }: ISIScreenProps) {
       <LinearGradient colors={[colors.deepNavy, '#0D2347']} style={StyleSheet.absoluteFill} />
       <SafeAreaView style={styles.safe}>
         <View style={styles.header}>
-          <Text style={styles.headerTitle}>
-            {lang === 'fr' ? 'Questionnaire ISI' : 'ISI Questionnaire'}
-          </Text>
+          <Text style={styles.headerTitle}>{t('isi.title')}</Text>
           <Text style={styles.headerSubtitle}>
-            {lang === 'fr'
-              ? `Semaine ${programWeek} — 7 questions`
-              : `Week ${programWeek} — 7 questions`}
+            {t('isi.week_header', { week: programWeek })}
           </Text>
           {onSkip && (
             <TouchableOpacity onPress={onSkip} style={styles.skipBtn}>
-              <Text style={styles.skipText}>{lang === 'fr' ? 'Passer' : 'Skip'}</Text>
+              <Text style={styles.skipText}>{t('isi.skip')}</Text>
             </TouchableOpacity>
           )}
         </View>
 
         <ScrollView contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}>
-          <Text style={styles.instruction}>
-            {lang === 'fr'
-              ? 'Pour chaque question, indiquez la sévérité de vos problèmes de sommeil au cours des deux dernières semaines.'
-              : 'For each question, indicate the severity of your sleep problems over the past two weeks.'}
-          </Text>
+          <Text style={styles.instruction}>{t('isi.instruction')}</Text>
 
-          {ISI_QUESTIONS.map((question) => (
-            <View key={question.id} style={styles.questionCard}>
-              <Text style={styles.questionNumber}>
-                {lang === 'fr' ? `Question ${question.id}` : `Question ${question.id}`}
-              </Text>
-              <Text style={styles.questionText}>{getQuestion(question)}</Text>
+          {ISI_QUESTION_IDS.map((qId) => (
+            <View key={qId} style={styles.questionCard}>
+              <Text style={styles.questionNumber}>{`${qId}/7`}</Text>
+              <Text style={styles.questionText}>{t(`isi.questions.q${qId}`)}</Text>
               <View style={styles.optionsRow}>
-                {getLabels(question).map((label, index) => {
-                  const isSelected = answers[question.id] === index;
+                {scaleLabels.map((label, index) => {
+                  const isSelected = answers[qId] === index;
                   return (
                     <TouchableOpacity
                       key={index}
                       style={[styles.option, isSelected && styles.optionSelected]}
-                      onPress={() => setAnswers(prev => ({ ...prev, [question.id]: index }))}
+                      onPress={() => setAnswers(prev => ({ ...prev, [qId]: index }))}
                       activeOpacity={0.7}
                     >
                       <Text style={[styles.optionScore, isSelected && styles.optionScoreSelected]}>
@@ -266,7 +171,7 @@ export function ISIScreen({ programWeek, onComplete, onSkip }: ISIScreenProps) {
           ))}
 
           <PeachButton
-            title={saving ? '...' : (lang === 'fr' ? 'Voir mes résultats' : 'See my results')}
+            title={t('isi.save')}
             onPress={handleSubmit}
             disabled={!allAnswered || saving}
             loading={saving}

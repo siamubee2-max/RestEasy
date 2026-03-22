@@ -40,7 +40,15 @@
     "window_reduced": "Ihr Schlaffenster wird um 15 Min. verkürzt",
     "module_unlocked": "Neues Modul freigeschaltet",
     "start_module": "Modul starten",
-    "days": ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"]
+    "days": [
+      "Mo",
+      "Di",
+      "Mi",
+      "Do",
+      "Fr",
+      "Sa",
+      "So"
+    ]
   },
   "night": {
     "title": "Nachtmodus",
@@ -186,7 +194,17 @@
     "result_title": "Ihr ISI-Score: {{score}}/28",
     "result_subtitle": "{{severity}}",
     "improvement": "Verbesserung seit Beginn: {{points}} Punkte",
-    "save": "Score speichern"
+    "save": "Score speichern",
+    "severity_none_label": "Keine Insomnie",
+    "severity_none_desc": "Ihr Schlaf liegt im klinischen Normalbereich.",
+    "severity_sub_label": "Unterschwellige Insomnie",
+    "severity_sub_desc": "Einige Schlafprobleme, aber beherrschbar.",
+    "severity_moderate_label": "Mäßige Insomnie",
+    "severity_moderate_desc": "Das KVT-I-Programm ist besonders für Ihre Situation geeignet.",
+    "severity_severe_label": "Schwere Insomnie",
+    "severity_severe_desc": "Das Programm kann Ihnen erheblich helfen.",
+    "week_header": "Woche {{week}} — 7 Fragen",
+    "skip": "Überspringen"
   },
   "paywall": {
     "title": "Entsperren Sie Ihren Schlaf",
@@ -324,5 +342,24 @@
     "add": "Hinzufügen",
     "patient_added": "Patient hinzugefügt",
     "patient_added_message": "Patient zu Ihrer Liste hinzugefügt."
+  },
+  "progress": {
+    "title": "Mein Fortschritt",
+    "subtitle": "Programm — Woche {{current}} von {{total}}",
+    "efficiency_improvement": "Effizienzverbesserung",
+    "weeks_completed": "Abgeschlossene Wochen",
+    "nights_logged": "Aufgezeichnete Nächte",
+    "chart_efficiency": "Schlafeffizienz",
+    "chart_target_efficiency": "Ziel: ≥ 85%",
+    "chart_onset": "Einschlafdauer",
+    "chart_target_onset": "Ziel: ≤ 20 Min.",
+    "chart_isi": "ISI-Score (Insomnie)",
+    "chart_target_isi": "Ziel: ≤ 7 (keine Insomnie)",
+    "table_title": "Wochendetails",
+    "table_week": "Wo.",
+    "table_efficiency": "Eff.",
+    "table_onset": "Einschlafen",
+    "table_nights": "Nächte",
+    "no_data": "Unzureichende Daten"
   }
 }
