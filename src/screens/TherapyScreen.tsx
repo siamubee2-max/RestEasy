@@ -66,7 +66,7 @@ export function TherapyScreen({
             />
           </View>
           <Text style={styles.progressLabel}>
-            {completedModules.length} / 6 modules complétés
+            {t('therapy.modules_completed', { count: completedModules.length })}
           </Text>
 
           {/* Module list */}

@@ -63,6 +63,7 @@
     "in_progress": "In Bearbeitung",
     "start": "Starten",
     "continue": "Fortfahren",
+    "modules_completed": "{{count}} / 6 Module abgeschlossen",
     "modules": {
       "s1_sleep_education": {
         "title": "Schlaf verstehen",
@@ -264,6 +265,64 @@
     "error": "Ein Fehler ist aufgetreten",
     "retry": "Erneut versuchen",
     "am": "AM",
-    "pm": "PM"
+    "pm": "PM",
+    "sign_out_confirm": "Sind Sie sicher, dass Sie sich abmelden möchten?",
+    "payment_error": "Ein Zahlungsfehler ist aufgetreten. Bitte versuchen Sie es erneut.",
+    "no_purchases_title": "Keine Käufe gefunden",
+    "no_purchases": "Für dieses Konto wurden keine früheren Käufe gefunden.",
+    "save_error": "Speichern nicht möglich. Bitte versuchen Sie es erneut."
+  },
+  "onboarding": {
+    "welcome": "Willkommen!",
+    "name_question": "Wie möchten Sie genannt werden?",
+    "name_placeholder": "Ihr Vorname",
+    "default_name": "Benutzer",
+    "wake_time_title": "Ihre Aufwachzeit",
+    "wake_time_question": "Wann stehen Sie normalerweise auf?\nVersuchen Sie, diese Zeit auch am Wochenende beizubehalten.",
+    "wake_time_label": "Übliche Aufwachzeit",
+    "wake_time_tip": "💡 Eine feste Aufwachzeit ist die wichtigste Regel der KVT-I.",
+    "time_in_bed_title": "Ihre Zeit im Bett",
+    "time_in_bed_question": "Wie viele Stunden verbringen Sie normalerweise im Bett?",
+    "bedtime_preview": "Schlafenszeit: {{time}}",
+    "time_in_bed_tip": "💡 Die KVT-I beginnt mit einem leicht eingeschränkten Schlaffenster, um Ihren Schlaf zu konsolidieren.",
+    "continue": "Weiter →",
+    "start_program": "Programm starten"
+  },
+  "tabs": {
+    "home": "Startseite",
+    "journal": "Tagebuch",
+    "weekly": "Bericht",
+    "therapy": "Therapie",
+    "profile": "Profil"
+  },
+  "error_boundary": {
+    "title": "Etwas ist schiefgelaufen",
+    "subtitle": "Ein unerwarteter Fehler ist aufgetreten. Unser Team wurde automatisch benachrichtigt.",
+    "retry": "Erneut versuchen"
+  },
+  "prescriber": {
+    "access_title": "Verschreiberzugang",
+    "access_subtitle": "Geben Sie Ihren Verschreibercode ein, um auf das Patientendashboard zuzugreifen.",
+    "code_placeholder": "Verschreibercode",
+    "verify": "Verifizieren",
+    "contact": "Sind Sie ein medizinischer Fachmann? Kontaktieren Sie uns: prescriber@resteasy.app",
+    "invalid_code": "Ungültiger Code",
+    "invalid_code_message": "Dieser Verschreibercode wird nicht erkannt.",
+    "dashboard_title": "Dashboard",
+    "patients_monitored_one": "{{count}} Patient überwacht",
+    "patients_monitored_other": "{{count}} Patienten überwacht",
+    "avg_efficiency": "Durchschn. Eff.",
+    "active_today": "Heute aktiv",
+    "on_track": "Auf Kurs",
+    "week_label": "Wo. {{week}}/6",
+    "efficiency_label": "Effizienz",
+    "days_label": "Tage",
+    "low_efficiency_alert": "Niedrige Effizienz — Anpassung erwägen",
+    "add_patient": "Patienten hinzufügen",
+    "patient_code_title": "Patientencode",
+    "patient_code_placeholder": "Vom Patienten bereitgestellter Code",
+    "add": "Hinzufügen",
+    "patient_added": "Patient hinzugefügt",
+    "patient_added_message": "Patient zu Ihrer Liste hinzugefügt."
   }
 }

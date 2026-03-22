@@ -13,6 +13,7 @@ import {
   Alert,
 } from 'react-native';
 import { useTranslation } from 'react-i18next';
+import { LANGUAGE_LABELS, SupportedLanguage } from '../utils/i18n';
 import { colors } from '../theme/colors';
 import { typography } from '../theme/typography';
 import { signOut } from '../lib/supabase';
@@ -45,7 +46,7 @@ function SettingRow({ icon, label, value, onPress, danger }: SettingRowProps) {
 
 export function ProfileScreen({
   navigation,
-  userName = 'Sarah',
+  userName = '',
   currentWeek = 3,
   programStartDate,
 }: ProfileScreenProps) {
@@ -54,7 +55,7 @@ export function ProfileScreen({
   const handleSignOut = () => {
     Alert.alert(
       t('profile.sign_out'),
-      'Êtes-vous sûr(e) de vouloir vous déconnecter ?',
+      t('common.sign_out_confirm'),
       [
         { text: t('common.cancel'), style: 'cancel' },
         {
@@ -69,11 +70,18 @@ export function ProfileScreen({
   };
 
   const handleLanguage = () => {
-    Alert.alert('Langue', 'Choisissez votre langue', [
-      { text: 'Français', onPress: () => i18n.changeLanguage('fr') },
-      { text: 'English', onPress: () => i18n.changeLanguage('en') },
-      { text: t('common.cancel'), style: 'cancel' },
-    ]);
+    const langs: SupportedLanguage[] = ['fr', 'en', 'es', 'de', 'pt'];
+    Alert.alert(
+      t('profile.language'),
+      undefined,
+      [
+        ...langs.map((lang) => ({
+          text: LANGUAGE_LABELS[lang],
+          onPress: () => i18n.changeLanguage(lang),
+        })),
+        { text: t('common.cancel'), style: 'cancel' as const },
+      ]
+    );
   };
 
   const weekProgress = (currentWeek / 6) * 100;
@@ -141,7 +149,7 @@ export function ProfileScreen({
             <SettingRow
               icon="🌐"
               label={t('profile.language')}
-              value={i18n.language === 'fr' ? 'Français' : 'English'}
+              value={LANGUAGE_LABELS[i18n.language as SupportedLanguage] ?? i18n.language}
               onPress={handleLanguage}
             />
             <View style={styles.divider} />

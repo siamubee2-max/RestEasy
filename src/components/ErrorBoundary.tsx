@@ -6,6 +6,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import i18n from 'i18next';
 import { captureError } from '../lib/sentry';
 import { colors } from '../theme/colors';
 import { typography } from '../theme/typography';
@@ -47,12 +48,12 @@ export class ErrorBoundary extends React.Component<Props, State> {
           style={StyleSheet.absoluteFill}
         />
         <Text style={styles.emoji}>🌙</Text>
-        <Text style={styles.title}>Quelque chose s'est mal passé</Text>
+        <Text style={styles.title}>{i18n.t('error_boundary.title')}</Text>
         <Text style={styles.subtitle}>
-          Une erreur inattendue s'est produite. Notre équipe a été notifiée automatiquement.
+          {i18n.t('error_boundary.subtitle')}
         </Text>
         <TouchableOpacity style={styles.button} onPress={this.handleReset}>
-          <Text style={styles.buttonText}>Réessayer</Text>
+          <Text style={styles.buttonText}>{i18n.t('error_boundary.retry')}</Text>
         </TouchableOpacity>
       </View>
     );

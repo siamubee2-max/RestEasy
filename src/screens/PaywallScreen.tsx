@@ -46,7 +46,7 @@ export function PaywallScreen({
   onSuccess,
   onDismiss,
 }: PaywallScreenProps) {
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
   const copy = getPaywallCopy(i18n.language);
 
   const [packages, setPackages] = useState<PurchasesPackage[]>([]);
@@ -82,8 +82,8 @@ export function PaywallScreen({
       onSuccess();
     } else if (result.error && result.error !== 'cancelled') {
       Alert.alert(
-        'Erreur',
-        'Une erreur est survenue lors du paiement. Veuillez réessayer.',
+        t('common.error'),
+        t('common.payment_error'),
         [{ text: 'OK' }]
       );
     }
@@ -98,8 +98,8 @@ export function PaywallScreen({
       onSuccess();
     } else {
       Alert.alert(
-        'Aucun achat trouvé',
-        'Aucun achat précédent n\'a été trouvé pour ce compte.',
+        t('common.no_purchases_title'),
+        t('common.no_purchases'),
         [{ text: 'OK' }]
       );
     }

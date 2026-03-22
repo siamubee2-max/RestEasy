@@ -9,8 +9,8 @@
  * - Export reports (PDF/CSV)
  * - Add patients via unique code
  *
- * Access: Feature flag 'prescriber_mode' must be enabled in PostHog
- * OR user enters a valid prescriber code.
+ * Access: Verified server-side via the verify-prescriber Edge Function.
+ * Codes are stored as secrets in Supabase — never in client code.
  */
 import React, { useState, useEffect } from 'react';
 import {
@@ -36,15 +36,11 @@ interface Patient {
   streak: number;
 }
 
-const PRESCRIBER_CODES = [
-  'MEDECIN2025', 'THERAPEUTE', 'PSYNUIT', 'SOMMEIL',
-];
-
 export default function PrescriberScreen() {
-  const { t, i18n } = useTranslation();
-  const lang = i18n.language.split('-')[0];
+  const { t } = useTranslation();
   const [patients, setPatients] = useState<Patient[]>([]);
   const [loading, setLoading] = useState(true);
+  const [verifying, setVerifying] = useState(false);
   const [codeInput, setCodeInput] = useState('');
   const [isVerified, setIsVerified] = useState(false);
   const [addingPatient, setAddingPatient] = useState(false);
@@ -55,17 +51,31 @@ export default function PrescriberScreen() {
   }, [isVerified]);
 
   async function verifyCode() {
-    const code = codeInput.trim().toUpperCase();
-    if (PRESCRIBER_CODES.includes(code)) {
-      setIsVerified(true);
-      PrescriberAnalytics.codeEntered(code.slice(0, 4));
-    } else {
-      Alert.alert(
-        lang === 'fr' ? 'Code invalide' : 'Invalid code',
-        lang === 'fr'
-          ? 'Ce code prescripteur n\'est pas reconnu.'
-          : 'This prescriber code is not recognized.'
-      );
+    const code = codeInput.trim();
+    if (!code) return;
+
+    setVerifying(true);
+    try {
+      const { data, error } = await supabase.functions.invoke('verify-prescriber', {
+        body: { code },
+      });
+
+      if (error) throw error;
+
+      if (data?.valid) {
+        setIsVerified(true);
+        PrescriberAnalytics.codeEntered(code.slice(0, 4));
+      } else {
+        Alert.alert(
+          t('prescriber.invalid_code'),
+          t('prescriber.invalid_code_message')
+        );
+      }
+    } catch (err) {
+      captureError(err as Error, { context: 'verifyPrescriberCode' });
+      Alert.alert(t('common.error'), t('common.save_error'));
+    } finally {
+      setVerifying(false);
     }
   }
 
@@ -75,26 +85,44 @@ export default function PrescriberScreen() {
       const { data: { user } } = await supabase.auth.getUser();
       if (!user) return;
 
-      // In a real implementation, this would query a prescriber_patients table
-      // For now, we show a demo with mock data
-      const mockPatients: Patient[] = [
-        {
-          id: '1', display_name: 'Patient A', program_week: 3,
-          avg_efficiency_last_week: 82, last_entry_date: '2025-03-19',
-          isi_initial: 18, isi_latest: 12, streak: 14,
-        },
-        {
-          id: '2', display_name: 'Patient B', program_week: 5,
-          avg_efficiency_last_week: 89, last_entry_date: '2025-03-20',
-          isi_initial: 22, isi_latest: 8, streak: 28,
-        },
-        {
-          id: '3', display_name: 'Patient C', program_week: 1,
-          avg_efficiency_last_week: 71, last_entry_date: '2025-03-18',
-          isi_initial: 15, isi_latest: 14, streak: 3,
-        },
-      ];
-      setPatients(mockPatients);
+      const { data, error } = await supabase
+        .from('prescriber_patients')
+        .select(`
+          patient_id,
+          profiles!inner(display_name),
+          sleep_entries(program_week, avg_efficiency_last_week:sleep_efficiency, entry_date),
+          isi_scores(program_week, score)
+        `)
+        .eq('prescriber_id', user.id)
+        .order('created_at', { ascending: false });
+
+      if (error) throw error;
+
+      const mapped: Patient[] = (data ?? []).map((row: Record<string, unknown>) => {
+        const profile = row.profiles as { display_name: string } | null;
+        const entries = (row.sleep_entries ?? []) as Array<{ program_week: number; sleep_efficiency: number; entry_date: string }>;
+        const isiScores = (row.isi_scores ?? []) as Array<{ program_week: number; score: number }>;
+
+        const sortedISI = [...isiScores].sort((a, b) => a.program_week - b.program_week);
+        const latestEntry = entries[0] ?? null;
+        const lastWeekEntries = entries.filter(e => e.program_week === (latestEntry?.program_week ?? 1));
+        const avgEff = lastWeekEntries.length
+          ? Math.round(lastWeekEntries.reduce((s, e) => s + (e.sleep_efficiency ?? 0), 0) / lastWeekEntries.length)
+          : 0;
+
+        return {
+          id: row.patient_id as string,
+          display_name: profile?.display_name ?? '—',
+          program_week: latestEntry?.program_week ?? 1,
+          avg_efficiency_last_week: avgEff,
+          last_entry_date: latestEntry?.entry_date ?? null,
+          isi_initial: sortedISI[0]?.score ?? null,
+          isi_latest: sortedISI[sortedISI.length - 1]?.score ?? null,
+          streak: entries.length,
+        };
+      });
+
+      setPatients(mapped);
     } catch (error) {
       captureError(error as Error, { context: 'loadPatients' });
     } finally {
@@ -121,33 +149,28 @@ export default function PrescriberScreen() {
       <SafeAreaView style={styles.container}>
         <View style={styles.codeContainer}>
           <Text style={styles.lockEmoji}>🔒</Text>
-          <Text style={styles.codeTitle}>
-            {lang === 'fr' ? 'Accès Prescripteur' : 'Prescriber Access'}
-          </Text>
-          <Text style={styles.codeSubtitle}>
-            {lang === 'fr'
-              ? 'Entrez votre code prescripteur pour accéder au tableau de bord patients.'
-              : 'Enter your prescriber code to access the patient dashboard.'}
-          </Text>
+          <Text style={styles.codeTitle}>{t('prescriber.access_title')}</Text>
+          <Text style={styles.codeSubtitle}>{t('prescriber.access_subtitle')}</Text>
           <TextInput
             style={styles.codeInput}
             value={codeInput}
             onChangeText={setCodeInput}
-            placeholder={lang === 'fr' ? 'Code prescripteur' : 'Prescriber code'}
+            placeholder={t('prescriber.code_placeholder')}
             placeholderTextColor={colors.textMuted}
             autoCapitalize="characters"
             autoCorrect={false}
           />
-          <TouchableOpacity style={styles.verifyButton} onPress={verifyCode}>
-            <Text style={styles.verifyButtonText}>
-              {lang === 'fr' ? 'Vérifier' : 'Verify'}
-            </Text>
+          <TouchableOpacity
+            style={[styles.verifyButton, verifying && { opacity: 0.6 }]}
+            onPress={verifyCode}
+            disabled={verifying}
+          >
+            {verifying
+              ? <ActivityIndicator color={colors.deepNavy} size="small" />
+              : <Text style={styles.verifyButtonText}>{t('prescriber.verify')}</Text>
+            }
           </TouchableOpacity>
-          <Text style={styles.contactText}>
-            {lang === 'fr'
-              ? 'Vous êtes professionnel de santé ? Contactez-nous : prescripteur@resteasy.app'
-              : 'Are you a healthcare professional? Contact us: prescriber@resteasy.app'}
-          </Text>
+          <Text style={styles.contactText}>{t('prescriber.contact')}</Text>
         </View>
       </SafeAreaView>
     );
@@ -166,41 +189,35 @@ export default function PrescriberScreen() {
       <ScrollView contentContainerStyle={styles.scrollContent}>
         {/* Header */}
         <View style={styles.header}>
-          <Text style={styles.title}>
-            {lang === 'fr' ? 'Tableau de bord' : 'Dashboard'}
-          </Text>
+          <Text style={styles.title}>{t('prescriber.dashboard_title')}</Text>
           <Text style={styles.subtitle}>
-            {patients.length} {lang === 'fr' ? 'patients suivis' : 'patients monitored'}
+            {t('prescriber.patients_monitored_other', { count: patients.length })}
           </Text>
         </View>
 
         {/* Summary Stats */}
-        <View style={styles.statsRow}>
-          <View style={styles.statCard}>
-            <Text style={styles.statValue}>
-              {Math.round(patients.reduce((s, p) => s + p.avg_efficiency_last_week, 0) / patients.length)}%
-            </Text>
-            <Text style={styles.statLabel}>
-              {lang === 'fr' ? 'Eff. moy.' : 'Avg. eff.'}
-            </Text>
+        {patients.length > 0 && (
+          <View style={styles.statsRow}>
+            <View style={styles.statCard}>
+              <Text style={styles.statValue}>
+                {Math.round(patients.reduce((s, p) => s + p.avg_efficiency_last_week, 0) / patients.length)}%
+              </Text>
+              <Text style={styles.statLabel}>{t('prescriber.avg_efficiency')}</Text>
+            </View>
+            <View style={styles.statCard}>
+              <Text style={styles.statValue}>
+                {patients.filter(p => p.last_entry_date === new Date().toISOString().split('T')[0]).length}
+              </Text>
+              <Text style={styles.statLabel}>{t('prescriber.active_today')}</Text>
+            </View>
+            <View style={styles.statCard}>
+              <Text style={styles.statValue}>
+                {patients.filter(p => p.avg_efficiency_last_week >= 85).length}
+              </Text>
+              <Text style={styles.statLabel}>{t('prescriber.on_track')}</Text>
+            </View>
           </View>
-          <View style={styles.statCard}>
-            <Text style={styles.statValue}>
-              {patients.filter(p => p.last_entry_date === new Date().toISOString().split('T')[0]).length}
-            </Text>
-            <Text style={styles.statLabel}>
-              {lang === 'fr' ? 'Actifs auj.' : 'Active today'}
-            </Text>
-          </View>
-          <View style={styles.statCard}>
-            <Text style={styles.statValue}>
-              {patients.filter(p => p.avg_efficiency_last_week >= 85).length}
-            </Text>
-            <Text style={styles.statLabel}>
-              {lang === 'fr' ? 'En bonne voie' : 'On track'}
-            </Text>
-          </View>
-        </View>
+        )}
 
         {/* Patient List */}
         {patients.map(patient => (
@@ -211,9 +228,9 @@ export default function PrescriberScreen() {
           >
             <View style={styles.patientHeader}>
               <Text style={styles.patientName}>{patient.display_name}</Text>
-              <View style={[styles.weekBadge]}>
+              <View style={styles.weekBadge}>
                 <Text style={styles.weekBadgeText}>
-                  {lang === 'fr' ? `Sem. ${patient.program_week}/6` : `Wk ${patient.program_week}/6`}
+                  {t('prescriber.week_label', { week: patient.program_week })}
                 </Text>
               </View>
             </View>
@@ -223,9 +240,7 @@ export default function PrescriberScreen() {
                 <Text style={[styles.patientStatValue, { color: getEfficiencyColor(patient.avg_efficiency_last_week) }]}>
                   {patient.avg_efficiency_last_week}%
                 </Text>
-                <Text style={styles.patientStatLabel}>
-                  {lang === 'fr' ? 'Efficacité' : 'Efficiency'}
-                </Text>
+                <Text style={styles.patientStatLabel}>{t('prescriber.efficiency_label')}</Text>
               </View>
               <View style={styles.patientStat}>
                 <Text style={[styles.patientStatValue, { color: colors.warmPeach }]}>
@@ -237,18 +252,14 @@ export default function PrescriberScreen() {
                 <Text style={[styles.patientStatValue, { color: colors.lavender }]}>
                   🔥 {patient.streak}
                 </Text>
-                <Text style={styles.patientStatLabel}>
-                  {lang === 'fr' ? 'Jours' : 'Days'}
-                </Text>
+                <Text style={styles.patientStatLabel}>{t('prescriber.days_label')}</Text>
               </View>
             </View>
 
-            {patient.avg_efficiency_last_week < 75 && (
+            {patient.avg_efficiency_last_week > 0 && patient.avg_efficiency_last_week < 75 && (
               <View style={styles.alertBanner}>
                 <Text style={styles.alertText}>
-                  ⚠️ {lang === 'fr'
-                    ? 'Efficacité faible — envisager un ajustement'
-                    : 'Low efficiency — consider adjustment'}
+                  ⚠️ {t('prescriber.low_efficiency_alert')}
                 </Text>
               </View>
             )}
@@ -260,21 +271,17 @@ export default function PrescriberScreen() {
           style={styles.addButton}
           onPress={() => setAddingPatient(true)}
         >
-          <Text style={styles.addButtonText}>
-            + {lang === 'fr' ? 'Ajouter un patient' : 'Add a patient'}
-          </Text>
+          <Text style={styles.addButtonText}>+ {t('prescriber.add_patient')}</Text>
         </TouchableOpacity>
 
         {addingPatient && (
           <View style={styles.addPatientForm}>
-            <Text style={styles.addPatientTitle}>
-              {lang === 'fr' ? 'Code patient' : 'Patient code'}
-            </Text>
+            <Text style={styles.addPatientTitle}>{t('prescriber.patient_code_title')}</Text>
             <TextInput
               style={styles.codeInput}
               value={patientCode}
               onChangeText={setPatientCode}
-              placeholder={lang === 'fr' ? 'Code fourni par le patient' : 'Code provided by patient'}
+              placeholder={t('prescriber.patient_code_placeholder')}
               placeholderTextColor={colors.textMuted}
               autoCapitalize="characters"
             />
@@ -285,14 +292,12 @@ export default function PrescriberScreen() {
                 setAddingPatient(false);
                 setPatientCode('');
                 Alert.alert(
-                  lang === 'fr' ? 'Patient ajouté' : 'Patient added',
-                  lang === 'fr' ? 'Le patient a été ajouté à votre liste.' : 'Patient added to your list.'
+                  t('prescriber.patient_added'),
+                  t('prescriber.patient_added_message')
                 );
               }}
             >
-              <Text style={styles.verifyButtonText}>
-                {lang === 'fr' ? 'Ajouter' : 'Add'}
-              </Text>
+              <Text style={styles.verifyButtonText}>{t('prescriber.add')}</Text>
             </TouchableOpacity>
           </View>
         )}

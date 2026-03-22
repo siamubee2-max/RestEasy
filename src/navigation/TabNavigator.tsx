@@ -14,6 +14,7 @@ import {
 } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { useTranslation } from 'react-i18next';
 import { HomeScreen } from '../screens/HomeScreen';
 import { JournalScreen } from '../screens/JournalScreen';
 import { WeeklyReviewScreen } from '../screens/WeeklyReviewScreen';
@@ -155,6 +156,7 @@ const tabStyles = StyleSheet.create({
 // ─── Tab Navigator ────────────────────────────────────────────────────────────
 
 function MainTabs() {
+  const { t } = useTranslation();
   return (
     <Tab.Navigator
       tabBar={(props) => <CustomTabBar {...props} />}
@@ -164,7 +166,7 @@ function MainTabs() {
         name="Home"
         component={HomeScreen}
         options={{
-          tabBarLabel: 'Accueil',
+          tabBarLabel: t('tabs.home'),
           tabBarIcon: ({ color }) => <HomeIcon color={color} />,
         }}
       />
@@ -172,7 +174,7 @@ function MainTabs() {
         name="Journal"
         component={JournalScreen}
         options={{
-          tabBarLabel: 'Journal',
+          tabBarLabel: t('tabs.journal'),
           tabBarIcon: ({ color }) => <JournalIcon color={color} />,
         }}
       />
@@ -180,14 +182,14 @@ function MainTabs() {
         name="Weekly"
         component={WeeklyReviewScreen}
         options={{
-          tabBarLabel: 'Bilan',
+          tabBarLabel: t('tabs.weekly'),
         }}
       />
       <Tab.Screen
         name="Therapy"
         component={TherapyScreen}
         options={{
-          tabBarLabel: 'Thérapie',
+          tabBarLabel: t('tabs.therapy'),
           tabBarIcon: ({ color }) => <TherapyIcon color={color} />,
         }}
       />
@@ -195,7 +197,7 @@ function MainTabs() {
         name="Profile"
         component={ProfileScreen}
         options={{
-          tabBarLabel: 'Profil',
+          tabBarLabel: t('tabs.profile'),
           tabBarIcon: ({ color }) => <ProfileIcon color={color} />,
         }}
       />

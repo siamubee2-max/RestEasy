@@ -63,6 +63,7 @@
     "in_progress": "Em andamento",
     "start": "Começar",
     "continue": "Continuar",
+    "modules_completed": "{{count}} / 6 módulos concluídos",
     "modules": {
       "s1_sleep_education": {
         "title": "Entender o sono",
@@ -264,6 +265,64 @@
     "error": "Ocorreu um erro",
     "retry": "Tentar novamente",
     "am": "AM",
-    "pm": "PM"
+    "pm": "PM",
+    "sign_out_confirm": "Tem certeza que deseja sair?",
+    "payment_error": "Ocorreu um erro de pagamento. Por favor, tente novamente.",
+    "no_purchases_title": "Nenhuma compra encontrada",
+    "no_purchases": "Nenhuma compra anterior foi encontrada para esta conta.",
+    "save_error": "Não foi possível salvar. Por favor, tente novamente."
+  },
+  "onboarding": {
+    "welcome": "Bem-vindo!",
+    "name_question": "Como você gostaria de ser chamado(a)?",
+    "name_placeholder": "Seu nome",
+    "default_name": "Usuário",
+    "wake_time_title": "Seu horário de acordar",
+    "wake_time_question": "A que horas você costuma acordar?\nTente manter o mesmo horário mesmo nos fins de semana.",
+    "wake_time_label": "Horário habitual de acordar",
+    "wake_time_tip": "💡 Um horário fixo para acordar é a regra mais importante da TCC-I.",
+    "time_in_bed_title": "Seu tempo na cama",
+    "time_in_bed_question": "Quantas horas você costuma passar na cama?",
+    "bedtime_preview": "Hora de dormir: {{time}}",
+    "time_in_bed_tip": "💡 A TCC-I começa com uma janela de sono levemente restrita para consolidar seu sono.",
+    "continue": "Continuar →",
+    "start_program": "Iniciar o programa"
+  },
+  "tabs": {
+    "home": "Início",
+    "journal": "Diário",
+    "weekly": "Revisão",
+    "therapy": "Terapia",
+    "profile": "Perfil"
+  },
+  "error_boundary": {
+    "title": "Algo deu errado",
+    "subtitle": "Ocorreu um erro inesperado. Nossa equipe foi notificada automaticamente.",
+    "retry": "Tentar novamente"
+  },
+  "prescriber": {
+    "access_title": "Acesso do prescritor",
+    "access_subtitle": "Digite seu código de prescritor para acessar o painel do paciente.",
+    "code_placeholder": "Código do prescritor",
+    "verify": "Verificar",
+    "contact": "Você é um profissional de saúde? Entre em contato: prescriber@resteasy.app",
+    "invalid_code": "Código inválido",
+    "invalid_code_message": "Este código de prescritor não é reconhecido.",
+    "dashboard_title": "Painel de controle",
+    "patients_monitored_one": "{{count}} paciente monitorado",
+    "patients_monitored_other": "{{count}} pacientes monitorados",
+    "avg_efficiency": "Ef. méd.",
+    "active_today": "Ativo hoje",
+    "on_track": "No caminho certo",
+    "week_label": "Sem. {{week}}/6",
+    "efficiency_label": "Eficiência",
+    "days_label": "Dias",
+    "low_efficiency_alert": "Baixa eficiência — considerar ajuste",
+    "add_patient": "Adicionar um paciente",
+    "patient_code_title": "Código do paciente",
+    "patient_code_placeholder": "Código fornecido pelo paciente",
+    "add": "Adicionar",
+    "patient_added": "Paciente adicionado",
+    "patient_added_message": "Paciente adicionado à sua lista."
   }
 }

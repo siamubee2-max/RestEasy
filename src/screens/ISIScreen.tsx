@@ -132,7 +132,7 @@ function getISISeverity(score: number, lang: string): { label: string; color: st
 }
 
 export function ISIScreen({ programWeek, onComplete, onSkip }: ISIScreenProps) {
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
   const lang = i18n.language.split('-')[0];
   const [answers, setAnswers] = useState<Record<number, number>>({});
   const [saving, setSaving] = useState(false);
@@ -174,7 +174,7 @@ export function ISIScreen({ programWeek, onComplete, onSkip }: ISIScreenProps) {
       Analytics.track('isi_completed', { week: programWeek, score: totalScore });
       setResult({ score: totalScore });
     } catch (error) {
-      Alert.alert('Erreur', 'Impossible de sauvegarder le questionnaire.');
+      Alert.alert(t('common.error'), t('common.save_error'));
     } finally {
       setSaving(false);
     }

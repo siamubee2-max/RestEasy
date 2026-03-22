@@ -13,6 +13,7 @@ import {
   ScrollView,
   Platform,
 } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import { colors } from '../theme/colors';
 import { typography } from '../theme/typography';
 
@@ -37,6 +38,7 @@ function formatDisplay(time: string): string {
 }
 
 export function TimePickerCard({ label, value, onChange }: TimePickerCardProps) {
+  const { t } = useTranslation();
   const [open, setOpen] = useState(false);
   const [tempH, setTempH] = useState(() => parseInt(value.split(':')[0]));
   const [tempM, setTempM] = useState(() => parseInt(value.split(':')[1]));
@@ -68,7 +70,7 @@ export function TimePickerCard({ label, value, onChange }: TimePickerCardProps) 
           <View style={styles.modalSheet}>
             <View style={styles.modalHeader}>
               <TouchableOpacity onPress={() => setOpen(false)}>
-                <Text style={styles.cancelText}>Annuler</Text>
+                <Text style={styles.cancelText}>{t('common.cancel')}</Text>
               </TouchableOpacity>
               <Text style={styles.modalTitle}>{label}</Text>
               <TouchableOpacity onPress={confirm}>

@@ -63,6 +63,7 @@
     "in_progress": "En cours",
     "start": "Commencer",
     "continue": "Continuer",
+    "modules_completed": "{{count}} / 6 modules complétés",
     "modules": {
       "s1_sleep_education": {
         "title": "Comprendre le sommeil",
@@ -119,6 +120,64 @@
     "error": "Une erreur est survenue",
     "retry": "Réessayer",
     "am": "AM",
-    "pm": "PM"
+    "pm": "PM",
+    "sign_out_confirm": "Êtes-vous sûr(e) de vouloir vous déconnecter ?",
+    "payment_error": "Une erreur est survenue lors du paiement. Veuillez réessayer.",
+    "no_purchases_title": "Aucun achat trouvé",
+    "no_purchases": "Aucun achat précédent n'a été trouvé pour ce compte.",
+    "save_error": "Impossible de sauvegarder. Veuillez réessayer."
+  },
+  "onboarding": {
+    "welcome": "Bienvenue !",
+    "name_question": "Comment souhaitez-vous être appelé(e) ?",
+    "name_placeholder": "Votre prénom",
+    "default_name": "Utilisateur",
+    "wake_time_title": "Votre heure de lever",
+    "wake_time_question": "À quelle heure vous levez-vous habituellement ?\nEssayez de la maintenir même le week-end.",
+    "wake_time_label": "Heure de lever habituelle",
+    "wake_time_tip": "💡 Une heure de lever fixe est la règle la plus importante de la TCC-I.",
+    "time_in_bed_title": "Votre temps au lit",
+    "time_in_bed_question": "Combien d'heures passez-vous habituellement au lit ?",
+    "bedtime_preview": "Coucher : {{time}}",
+    "time_in_bed_tip": "💡 La TCC-I commence avec une fenêtre de sommeil légèrement restreinte pour consolider votre sommeil.",
+    "continue": "Continuer →",
+    "start_program": "Commencer le programme"
+  },
+  "tabs": {
+    "home": "Accueil",
+    "journal": "Journal",
+    "weekly": "Bilan",
+    "therapy": "Thérapie",
+    "profile": "Profil"
+  },
+  "error_boundary": {
+    "title": "Quelque chose s'est mal passé",
+    "subtitle": "Une erreur inattendue s'est produite. Notre équipe a été notifiée automatiquement.",
+    "retry": "Réessayer"
+  },
+  "prescriber": {
+    "access_title": "Accès prescripteur",
+    "access_subtitle": "Entrez votre code prescripteur pour accéder au tableau de bord patient.",
+    "code_placeholder": "Code prescripteur",
+    "verify": "Vérifier",
+    "contact": "Êtes-vous un professionnel de santé ? Contactez-nous : prescriber@resteasy.app",
+    "invalid_code": "Code invalide",
+    "invalid_code_message": "Ce code prescripteur n'est pas reconnu.",
+    "dashboard_title": "Tableau de bord",
+    "patients_monitored_one": "{{count}} patient suivi",
+    "patients_monitored_other": "{{count}} patients suivis",
+    "avg_efficiency": "Eff. moy.",
+    "active_today": "Actif aujourd'hui",
+    "on_track": "Sur la bonne voie",
+    "week_label": "Sem. {{week}}/6",
+    "efficiency_label": "Efficacité",
+    "days_label": "Jours",
+    "low_efficiency_alert": "Faible efficacité — envisager un ajustement",
+    "add_patient": "Ajouter un patient",
+    "patient_code_title": "Code patient",
+    "patient_code_placeholder": "Code fourni par le patient",
+    "add": "Ajouter",
+    "patient_added": "Patient ajouté",
+    "patient_added_message": "Patient ajouté à votre liste."
   }
 }

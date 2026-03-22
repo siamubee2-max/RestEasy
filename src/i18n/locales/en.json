@@ -63,6 +63,7 @@
     "in_progress": "In progress",
     "start": "Start",
     "continue": "Continue",
+    "modules_completed": "{{count}} / 6 modules completed",
     "modules": {
       "s1_sleep_education": {
         "title": "Understanding Sleep",
@@ -119,6 +120,64 @@
     "error": "An error occurred",
     "retry": "Retry",
     "am": "AM",
-    "pm": "PM"
+    "pm": "PM",
+    "sign_out_confirm": "Are you sure you want to sign out?",
+    "payment_error": "A payment error occurred. Please try again.",
+    "no_purchases_title": "No purchases found",
+    "no_purchases": "No previous purchases were found for this account.",
+    "save_error": "Unable to save. Please try again."
+  },
+  "onboarding": {
+    "welcome": "Welcome!",
+    "name_question": "What would you like to be called?",
+    "name_placeholder": "Your first name",
+    "default_name": "User",
+    "wake_time_title": "Your wake time",
+    "wake_time_question": "What time do you usually wake up?\nTry to keep it consistent even on weekends.",
+    "wake_time_label": "Usual wake time",
+    "wake_time_tip": "💡 A fixed wake time is the most important rule in CBT-I.",
+    "time_in_bed_title": "Your time in bed",
+    "time_in_bed_question": "How many hours do you usually spend in bed?",
+    "bedtime_preview": "Bedtime: {{time}}",
+    "time_in_bed_tip": "💡 CBT-I starts with a slightly restricted sleep window to consolidate your sleep.",
+    "continue": "Continue →",
+    "start_program": "Start the Program"
+  },
+  "tabs": {
+    "home": "Home",
+    "journal": "Journal",
+    "weekly": "Review",
+    "therapy": "Therapy",
+    "profile": "Profile"
+  },
+  "error_boundary": {
+    "title": "Something went wrong",
+    "subtitle": "An unexpected error occurred. Our team has been notified.",
+    "retry": "Try again"
+  },
+  "prescriber": {
+    "access_title": "Prescriber Access",
+    "access_subtitle": "Enter your prescriber code to access the patient dashboard.",
+    "code_placeholder": "Prescriber code",
+    "verify": "Verify",
+    "contact": "Are you a healthcare professional? Contact us: prescriber@resteasy.app",
+    "invalid_code": "Invalid code",
+    "invalid_code_message": "This prescriber code is not recognized.",
+    "dashboard_title": "Dashboard",
+    "patients_monitored_one": "{{count}} patient monitored",
+    "patients_monitored_other": "{{count}} patients monitored",
+    "avg_efficiency": "Avg. eff.",
+    "active_today": "Active today",
+    "on_track": "On track",
+    "week_label": "Wk {{week}}/6",
+    "efficiency_label": "Efficiency",
+    "days_label": "Days",
+    "low_efficiency_alert": "Low efficiency — consider adjustment",
+    "add_patient": "Add a patient",
+    "patient_code_title": "Patient code",
+    "patient_code_placeholder": "Code provided by patient",
+    "add": "Add",
+    "patient_added": "Patient added",
+    "patient_added_message": "Patient added to your list."
   }
 }

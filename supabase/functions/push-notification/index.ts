@@ -71,11 +71,12 @@ serve(async (req: Request) => {
       );
     }
 
-    // Build Expo push messages
+    // Validate and build Expo push messages
+    const EXPO_TOKEN_RE = /^ExponentPushToken\[.+\]$/;
     const messages = profiles
-      .filter(p => p.push_token?.startsWith('ExponentPushToken'))
+      .filter(p => p.push_token && EXPO_TOKEN_RE.test(p.push_token))
       .map(profile => {
-        const locale = (profile.locale ?? 'fr').split('-')[0];
+        const locale = (profile.locale ?? 'en').split('-')[0];
         const content = NOTIFICATION_CONTENT[type][locale] ?? NOTIFICATION_CONTENT[type]['en'];
         return {
           to: profile.push_token,
@@ -99,10 +100,15 @@ serve(async (req: Request) => {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
+        'Accept-Encoding': 'gzip, deflate',
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(messages),
     });
+
+    if (!expoResponse.ok) {
+      throw new Error(`Expo API error: ${expoResponse.status} ${expoResponse.statusText}`);
+    }
 
     const expoResult = await expoResponse.json();
 

@@ -8,77 +8,97 @@
  * - All PHI (Protected Health Information) encrypted at rest and in transit
  *
  * HIPAA compliance notes:
- * - Data minimization: only collect what's needed for TCC-I
+ * - Data minimization: only collect what's needed for CBT-I
  * - Audit log: all data access logged to Supabase audit table
  * - Right to deletion: delete-account Edge Function wipes all data
  * - Data portability: export function returns decrypted JSON
  */
 import * as SecureStore from 'expo-secure-store';
-import * as Crypto from 'expo-crypto';
 
-const KEY_ALIAS = 'resteasy_encryption_key_v1';
+const KEY_ALIAS = 'resteasy_encryption_key_v2';
 const KEY_ROTATION_DAYS = 365;
 
 // ─── Key Management ───────────────────────────────────────────────────────────
 
-export async function getOrCreateEncryptionKey(): Promise<string> {
+async function getOrCreateRawKey(): Promise<Uint8Array> {
   try {
     const stored = await SecureStore.getItemAsync(KEY_ALIAS);
     if (stored) {
       const parsed = JSON.parse(stored);
-      // Check if key needs rotation
       const createdAt = new Date(parsed.created_at);
       const daysSince = (Date.now() - createdAt.getTime()) / (1000 * 60 * 60 * 24);
       if (daysSince < KEY_ROTATION_DAYS) {
-        return parsed.key;
+        return Uint8Array.from(atob(parsed.key), c => c.charCodeAt(0));
       }
     }
   } catch {
-    // Key doesn't exist yet
+    // Key doesn't exist yet or is corrupted — generate a new one
   }
 
-  // Generate new key
-  const newKey = await Crypto.digestStringAsync(
-    Crypto.CryptoDigestAlgorithm.SHA256,
-    `resteasy-${Date.now()}-${Math.random()}`
-  );
+  // Generate a cryptographically random 256-bit key
+  const keyBytes = new Uint8Array(32);
+  globalThis.crypto.getRandomValues(keyBytes);
+  const keyBase64 = btoa(String.fromCharCode(...keyBytes));
 
   await SecureStore.setItemAsync(KEY_ALIAS, JSON.stringify({
-    key: newKey,
+    key: keyBase64,
     created_at: new Date().toISOString(),
-    version: 1,
+    version: 2,
   }), {
     keychainAccessible: SecureStore.WHEN_UNLOCKED_THIS_DEVICE_ONLY,
   });
 
-  return newKey;
+  return keyBytes;
+}
+
+async function importKey(rawKey: Uint8Array, usage: KeyUsage[]): Promise<CryptoKey> {
+  return globalThis.crypto.subtle.importKey(
+    'raw', rawKey, { name: 'AES-GCM' }, false, usage
+  );
 }
 
 // ─── Encrypt / Decrypt ────────────────────────────────────────────────────────
 
 /**
- * Encrypts a string value using SHA-256 derived key.
- * For production, replace with AES-256-GCM via react-native-quick-crypto.
+ * Encrypts a string using AES-256-GCM.
+ * Output: base64(iv [12 bytes] || ciphertext)
  */
 export async function encryptValue(value: string): Promise<string> {
-  const key = await getOrCreateEncryptionKey();
-  // Simple XOR-based obfuscation for demo — replace with AES-256-GCM in production
-  const keyBytes = Array.from(key);
-  const valueBytes = Array.from(value);
-  const encrypted = valueBytes.map((char, i) =>
-    String.fromCharCode(char.charCodeAt(0) ^ keyBytes[i % keyBytes.length].charCodeAt(0))
-  ).join('');
-  return Buffer.from(encrypted).toString('base64');
+  const rawKey = await getOrCreateRawKey();
+  const key = await importKey(rawKey, ['encrypt']);
+
+  const iv = new Uint8Array(12);
+  globalThis.crypto.getRandomValues(iv);
+
+  const encoded = new TextEncoder().encode(value);
+  const cipherBuf = await globalThis.crypto.subtle.encrypt(
+    { name: 'AES-GCM', iv },
+    key,
+    encoded
+  );
+
+  const combined = new Uint8Array(12 + cipherBuf.byteLength);
+  combined.set(iv, 0);
+  combined.set(new Uint8Array(cipherBuf), 12);
+
+  return btoa(String.fromCharCode(...combined));
 }
 
 export async function decryptValue(encrypted: string): Promise<string> {
-  const key = await getOrCreateEncryptionKey();
-  const decoded = Buffer.from(encrypted, 'base64').toString();
-  const keyBytes = Array.from(key);
-  const decodedBytes = Array.from(decoded);
-  return decodedBytes.map((char, i) =>
-    String.fromCharCode(char.charCodeAt(0) ^ keyBytes[i % keyBytes.length].charCodeAt(0))
-  ).join('');
+  const rawKey = await getOrCreateRawKey();
+  const key = await importKey(rawKey, ['decrypt']);
+
+  const combined = Uint8Array.from(atob(encrypted), c => c.charCodeAt(0));
+  const iv = combined.slice(0, 12);
+  const ciphertext = combined.slice(12);
+
+  const decrypted = await globalThis.crypto.subtle.decrypt(
+    { name: 'AES-GCM', iv },
+    key,
+    ciphertext
+  );
+
+  return new TextDecoder().decode(decrypted);
 }
 
 /**
@@ -96,7 +116,7 @@ export async function encryptSleepEntry(entry: Record<string, unknown>): Promise
   }
 
   encrypted['_encrypted'] = true;
-  encrypted['_encryption_version'] = 1;
+  encrypted['_encryption_version'] = 2;
 
   return encrypted;
 }
@@ -122,7 +142,7 @@ export async function exportUserData(entries: Record<string, unknown>[]): Promis
   const decrypted = await Promise.all(entries.map(decryptSleepEntry));
   return JSON.stringify({
     export_date: new Date().toISOString(),
-    format_version: 1,
+    format_version: 2,
     data: decrypted,
   }, null, 2);
 }

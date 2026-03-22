@@ -57,8 +57,9 @@ export function JournalScreen({ navigation, currentWeek = 3, onSave }: JournalSc
       Alert.alert('✓', t('journal.saved'), [
         { text: 'OK', onPress: () => navigation.goBack() },
       ]);
-    } catch (e: any) {
-      Alert.alert('Erreur', e.message);
+    } catch (e: unknown) {
+      const message = e instanceof Error ? e.message : t('common.save_error');
+      Alert.alert(t('common.error'), message);
     } finally {
       setSaving(false);
     }

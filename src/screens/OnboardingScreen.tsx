@@ -65,7 +65,7 @@ export function OnboardingScreen({ onComplete }: OnboardingScreenProps) {
 
       await Promise.all([
         supabase.from('profiles').update({
-          display_name: name.trim() || 'Utilisateur',
+          display_name: name.trim() || t('onboarding.default_name'),
           updated_at: new Date().toISOString(),
         }).eq('id', user.id),
 
@@ -118,15 +118,15 @@ export function OnboardingScreen({ onComplete }: OnboardingScreenProps) {
             {step === 0 && (
               <View style={styles.stepContent}>
                 <Text style={styles.stepEmoji}>👋</Text>
-                <Text style={styles.stepTitle}>Bienvenue !</Text>
+                <Text style={styles.stepTitle}>{t('onboarding.welcome')}</Text>
                 <Text style={styles.stepSubtitle}>
-                  Comment souhaitez-vous être appelé(e) ?
+                  {t('onboarding.name_question')}
                 </Text>
                 <TextInput
                   style={styles.nameInput}
                   value={name}
                   onChangeText={setName}
-                  placeholder="Votre prénom"
+                  placeholder={t('onboarding.name_placeholder')}
                   placeholderTextColor={colors.textMuted}
                   autoFocus
                   returnKeyType="next"
@@ -140,19 +140,18 @@ export function OnboardingScreen({ onComplete }: OnboardingScreenProps) {
             {step === 1 && (
               <View style={styles.stepContent}>
                 <Text style={styles.stepEmoji}>⏰</Text>
-                <Text style={styles.stepTitle}>Votre heure de lever</Text>
+                <Text style={styles.stepTitle}>{t('onboarding.wake_time_title')}</Text>
                 <Text style={styles.stepSubtitle}>
-                  À quelle heure vous levez-vous habituellement ?{'\n'}
-                  Essayez de la maintenir même le week-end.
+                  {t('onboarding.wake_time_question')}
                 </Text>
                 <TimePickerCard
-                  label="Heure de lever habituelle"
+                  label={t('onboarding.wake_time_label')}
                   value={wakeTime}
                   onChange={setWakeTime}
                 />
                 <View style={styles.tipCard}>
                   <Text style={styles.tipText}>
-                    💡 Une heure de lever fixe est la règle la plus importante de la TCC-I.
+                    {t('onboarding.wake_time_tip')}
                   </Text>
                 </View>
               </View>
@@ -162,9 +161,9 @@ export function OnboardingScreen({ onComplete }: OnboardingScreenProps) {
             {step === 2 && (
               <View style={styles.stepContent}>
                 <Text style={styles.stepEmoji}>🛏</Text>
-                <Text style={styles.stepTitle}>Votre temps au lit</Text>
+                <Text style={styles.stepTitle}>{t('onboarding.time_in_bed_title')}</Text>
                 <Text style={styles.stepSubtitle}>
-                  Combien d'heures passez-vous habituellement au lit ?
+                  {t('onboarding.time_in_bed_question')}
                 </Text>
                 <View style={styles.stepperCard}>
                   <View style={styles.stepper}>
@@ -177,7 +176,7 @@ export function OnboardingScreen({ onComplete }: OnboardingScreenProps) {
                     <View style={styles.stepValueBlock}>
                       <Text style={styles.stepValue}>{timeInBed}h</Text>
                       <Text style={styles.stepValueSub}>
-                        Coucher : {computeBedtime()}
+                        {t('onboarding.bedtime_preview', { time: computeBedtime() })}
                       </Text>
                     </View>
                     <View
@@ -190,7 +189,7 @@ export function OnboardingScreen({ onComplete }: OnboardingScreenProps) {
                 </View>
                 <View style={styles.tipCard}>
                   <Text style={styles.tipText}>
-                    💡 La TCC-I commence avec une fenêtre de sommeil légèrement restreinte pour consolider votre sommeil.
+                    {t('onboarding.time_in_bed_tip')}
                   </Text>
                 </View>
               </View>
@@ -198,7 +197,7 @@ export function OnboardingScreen({ onComplete }: OnboardingScreenProps) {
 
             {/* CTA */}
             <PeachButton
-              title={step < STEPS - 1 ? 'Continuer →' : 'Commencer le programme'}
+              title={step < STEPS - 1 ? t('onboarding.continue') : t('onboarding.start_program')}
               onPress={handleNext}
               disabled={!canContinue}
               loading={saving}
